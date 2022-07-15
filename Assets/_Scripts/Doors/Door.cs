@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    [SerializeField] private DoorsId _doorId;
     [SerializeField] private GameState _game;
-    private readonly DoorsId DoorId;
-    private readonly List<CharactersId> CharactersWhoPasses;
+    [SerializeField] private List<CharactersId> _charactersWhoPasses;
     private Character _character;
 
 
@@ -22,7 +22,7 @@ public class Door : MonoBehaviour
             throw new Exception("Character is null!");
         if (!_character.IsTryingToPass)
             return;
-        if (CharactersWhoPasses.Contains(_character.Race))
+        if (_charactersWhoPasses.Contains(_character.Species))
         {
             CharacterPassed();
             return;

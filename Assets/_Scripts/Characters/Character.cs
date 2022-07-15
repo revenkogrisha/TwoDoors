@@ -5,11 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(IMoveable))]
 public class Character : MonoBehaviour
 {
+    public CharactersId Species;
 
     private bool _isTryingToPass = false;
     private IMoveable _moveable;
 
-    public CharactersId Race { get; }
     public bool IsTryingToPass => _isTryingToPass;
 
     private void Awake()

@@ -356,9 +356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9340cf554cbd06a418793d8ac92bb928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorNumber: 1
-  CharactersWhoPasses: 04000000
+  _doorId: 0
   _game: {fileID: 1786452848}
+  _charactersWhoPasses: 04000000
 --- !u!212 &1161543000
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -860,9 +860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9340cf554cbd06a418793d8ac92bb928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorNumber: 0
-  CharactersWhoPasses: 00000000
+  _doorId: 0
   _game: {fileID: 1786452848}
+  _charactersWhoPasses: 00000000
 --- !u!61 &1916215052
 BoxCollider2D:
   m_ObjectHideFlags: 0
