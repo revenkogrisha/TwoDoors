@@ -1,11 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
     private int _score = 0;
     [SerializeField] private int _defaultReward = 1;
     [SerializeField] private int _defaultPunishment = 2;
+
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
 
     public void AddScore()
     {
@@ -23,11 +27,13 @@ public class GameState : MonoBehaviour
 
     private void FinishLevel()
     {
-        //MAKE THIS
+        Time.timeScale = 0;
+        EventHolder.RaiseGameFinish();
     }
 
     private void GameOver()
     {
-        //Make this
+        Time.timeScale = 0;
+        EventHolder.RaiseGameOver();
     }
 }
