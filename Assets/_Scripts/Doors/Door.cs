@@ -9,12 +9,15 @@ public class Door : MonoBehaviour
     [SerializeField] private List<CharactersId> _charactersWhoPasses;
     private Character _character;
 
+    #region MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         _character = other.GetComponent<Character>();
         CheckCharacter();
     }
+
+    #endregion
 
     private void CheckCharacter()
     {

@@ -6,10 +6,14 @@ public class ForwardMovement : MonoBehaviour, IMoveable
     [SerializeField] private float _speed;
     private Rigidbody2D _rigidbody2D;
 
+    #region MonoBehaviour
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
+
+    #endregion
 
     public void Move()
     {

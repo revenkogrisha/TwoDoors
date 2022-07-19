@@ -12,6 +12,8 @@ public class Character : MonoBehaviour
 
     public bool IsTryingToPass => _isTryingToPass;
 
+    #region MonoBehaviour
+
     private void Awake()
     {
         _moveable = GetComponent<IMoveable>();
@@ -22,14 +24,16 @@ public class Character : MonoBehaviour
         Move();
     }
 
-    public void Move()
-    {
-        _moveable.Move();
-    }
-
     private void OnMouseUp()
     {
         StartCoroutine(TryToPass());
+    }
+
+    #endregion
+
+    public void Move()
+    {
+        _moveable.Move();
     }
 
     private IEnumerator TryToPass()

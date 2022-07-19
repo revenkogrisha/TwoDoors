@@ -6,6 +6,8 @@ public class UISystem : MonoBehaviour
     [SerializeField] private GameObject _finishPanel;
     [SerializeField] private GameObject _gameOverPanel;
 
+    #region MonoBehaviour
+
     private void OnEnable()
     {
         EventHolder.OnGameFinished += OpenFinishPanel;
@@ -17,6 +19,8 @@ public class UISystem : MonoBehaviour
         EventHolder.OnGameFinished -= OpenFinishPanel;
         EventHolder.OnGameOvered -= OpenGameOverPanel;
     }
+
+    #endregion
 
     public void OpenFinishPanel()
     {

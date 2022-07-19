@@ -4,18 +4,11 @@ public class DoorAnimator : MonoBehaviour
 {
     private bool _isCollided = false;
 
+    #region MonoBehaviour
+
     private void OnMouseOver()
     {
         Open();
-    }
-
-    private void Open()
-    {
-        if (_isCollided)
-            return;
-        _isCollided = true;
-
-        //Never do it
     }
 
     private void OnMouseExit()
@@ -26,6 +19,17 @@ public class DoorAnimator : MonoBehaviour
     private void OnTriggerExit2D()
     {
         Close();
+    }
+
+    #endregion
+
+    private void Open()
+    {
+        if (_isCollided)
+            return;
+        _isCollided = true;
+
+        //Never do it
     }
 
     private void Close()

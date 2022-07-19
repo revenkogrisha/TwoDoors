@@ -9,11 +9,15 @@ public class CharactersSpawner : MonoBehaviour
     private float _time = 0;
     private int _checkedTime = 0;
 
+    #region MonoBehaviour
+
     void Update()
     {
         int timeInSeconds = GetTimeInSeconds();
         CheckCooldownAndSpawn(timeInSeconds);
     }
+
+    #endregion
 
     private int GetTimeInSeconds()
     {

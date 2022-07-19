@@ -10,6 +10,8 @@ public class DragableObject : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;
 
+    #region MonoBehaviour
+
     private void Awake()
     {
         _transform = transform;
@@ -22,6 +24,13 @@ public class DragableObject : MonoBehaviour
         SetTransformToTouchPoint();
         DisableMovementAndCollider();
     }
+
+    private void OnMouseUp()
+    {
+        EnableMovementAndCollider();
+    }
+
+    #endregion
 
     private void SetTransformToTouchPoint()
     {
@@ -36,11 +45,6 @@ public class DragableObject : MonoBehaviour
     {
         _rigidbody2D.simulated = false;
         _collider2D.enabled = false;
-    }
-
-    private void OnMouseUp()
-    {
-        EnableMovementAndCollider();
     }
 
     private void EnableMovementAndCollider()
