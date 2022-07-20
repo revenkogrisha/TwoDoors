@@ -23,13 +23,16 @@ public class Door : MonoBehaviour
     {
         if (_character == null)
             throw new Exception("Character is null!");
+
         if (!_character.IsTryingToPass)
             return;
+
         if (_charactersWhoPasses.Contains(_character.Species))
         {
             CharacterPassed();
             return;
         }
+
         CharacterDidNotPass();
     }
 

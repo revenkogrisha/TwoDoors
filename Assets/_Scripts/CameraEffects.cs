@@ -58,6 +58,7 @@ public class CameraEffects : MonoBehaviour
     {
         var duration = _shakeDuration;
         OrthographicSize *= _zoomWhileShaking;
+
         while (duration > 0)
         {
             var shakedPosition = Random.insideUnitSphere * .9f;
@@ -67,6 +68,7 @@ public class CameraEffects : MonoBehaviour
 
             yield return new WaitForSeconds(0f);
         }
+
         SetDefaultCameraView();
     }
 

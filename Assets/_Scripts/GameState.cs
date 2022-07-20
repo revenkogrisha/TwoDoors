@@ -18,22 +18,24 @@ public class GameState : MonoBehaviour
     public void AddScore()
     {
         _score += _defaultReward;
-        if (_score >= 10) 
+
+        if (_score >= 10)
         {
             FinishLevel();
-            return;
         }
+
         EventHolder.RaiseCharacterPassed();
     }
 
     public void SubtractScore()
     {
         _score -= _defaultPunishment;
+
         if (_score < 0)
         {
             GameOver();
-            return;
         }
+
         EventHolder.RaisePlayerMistaken();
     }
 
