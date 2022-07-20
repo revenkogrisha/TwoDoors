@@ -69,11 +69,6 @@ public class CameraEffects : MonoBehaviour
             yield return new WaitForSeconds(0f);
         }
 
-        SetDefaultCameraView();
-    }
-
-    private void SetDefaultCameraView()
-    {
         _transform.position = _cameraDefaultPosition;
         OrthographicSize = _cameraDefaultSize;
     }

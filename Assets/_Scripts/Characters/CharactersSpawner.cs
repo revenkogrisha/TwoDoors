@@ -6,14 +6,20 @@ public class CharactersSpawner : MonoBehaviour
 
     [SerializeField] private int _defaultSpawnCooldown = 2;
     private float _time = 0;
+    private int _timeInSeconds = 0;
     private int _checkedTime = 0;
 
     #region MonoBehaviour
 
     void Update()
     {
-        int timeInSeconds = GetTimeInSeconds();
-        CheckCooldownAndSpawn(timeInSeconds);
+        _timeInSeconds = GetTimeInSeconds();
+
+        if (IsRightCooldown())
+        {
+            SpawnRandomCharacter();
+            _checkedTime = _timeInSeconds;
+        }
     }
 
     #endregion
@@ -21,18 +27,20 @@ public class CharactersSpawner : MonoBehaviour
     private int GetTimeInSeconds()
     {
         _time += Time.deltaTime;
+
         return Mathf.RoundToInt(_time);
     }
 
-    private void CheckCooldownAndSpawn(int timeInSeconds)
+    private bool IsRightCooldown()
     {
-        if ((timeInSeconds % _defaultSpawnCooldown) != 0) return;
-        if (timeInSeconds <= _checkedTime) return;
-        _checkedTime = timeInSeconds;
-        SpawnRandomCharacterFromList();
+        if ((_timeInSeconds % _defaultSpawnCooldown) != 0
+            || _timeInSeconds <= _checkedTime)
+            return false;
+
+        return true;
     }
 
-    private void SpawnRandomCharacterFromList()
+    private void SpawnRandomCharacter()
     {
         int index = Random.Range(0, CharactersInGame.Length);
         Instantiate(CharactersInGame[index]);

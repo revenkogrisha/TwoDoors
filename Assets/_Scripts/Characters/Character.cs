@@ -5,10 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(IMoveable))]
 public class Character : MonoBehaviour
 {
-    public CharactersId Species;
-
+    [SerializeField] private CharactersId _species;
     private bool _isTryingToPass = false;
     private IMoveable _moveable;
+
+    public CharactersId Species
+    {
+        get
+        {
+            return _species;
+        }
+    }
 
     public bool IsTryingToPass => _isTryingToPass;
 

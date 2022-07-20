@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DragableObject : MonoBehaviour
 {
-
     private Transform _transform;
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;

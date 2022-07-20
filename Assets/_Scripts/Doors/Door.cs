@@ -14,35 +14,36 @@ public class Door : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         _character = other.GetComponent<Character>();
-        CheckCharacter();
-    }
 
-    #endregion
-
-    private void CheckCharacter()
-    {
         if (_character == null)
             throw new Exception("Character is null!");
 
         if (!_character.IsTryingToPass)
             return;
 
+        TryPassCharacter();
+    }
+
+    #endregion
+
+    private void TryPassCharacter()
+    {
         if (_charactersWhoPasses.Contains(_character.Species))
         {
-            CharacterPassed();
+            PassCharacter();
             return;
         }
 
-        CharacterDidNotPass();
+        SubtractScore();
     }
 
-    private void CharacterPassed()
+    private void PassCharacter()
     {
         Destroy(_character.gameObject);
         _game.AddScore();
     }
 
-    private void CharacterDidNotPass()
+    private void SubtractScore()
     {
         Destroy(_character.gameObject);
         _game.SubtractScore();
