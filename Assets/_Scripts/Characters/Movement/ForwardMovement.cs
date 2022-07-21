@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ForwardMovement : MonoBehaviour, IMoveable
 {
-    [SerializeField] private float _speed;
+    [SerializeField] protected float _speed;
     private Rigidbody2D _rigidbody2D;
 
     #region MonoBehaviour
@@ -15,7 +15,7 @@ public class ForwardMovement : MonoBehaviour, IMoveable
 
     #endregion
 
-    public void Move()
+    public virtual void Move()
     {
         _rigidbody2D.velocity = new Vector2(_speed, _rigidbody2D.velocity.y);
     }

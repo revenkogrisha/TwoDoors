@@ -1,44 +1,26 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Timer))]
 public class CharactersSpawner : MonoBehaviour
 {
     public GameObject[] CharactersInGame;
 
-    [SerializeField] private int _defaultSpawnCooldown = 2;
-    private float _time = 0;
-    private int _timeInSeconds = 0;
-    private int _checkedTime = 0;
+    private Timer _timer;
 
     #region MonoBehaviour
 
-    void Update()
+    private void OnEnable()
     {
-        _timeInSeconds = GetTimeInSeconds();
+        _timer = GetComponent<Timer>();
+        _timer.OnCooldownPassed += SpawnRandomCharacter;
+    }
 
-        if (IsRightCooldown())
-        {
-            SpawnRandomCharacter();
-            _checkedTime = _timeInSeconds;
-        }
+    private void OnDisable()
+    {
+        _timer.OnCooldownPassed -= SpawnRandomCharacter;
     }
 
     #endregion
-
-    private int GetTimeInSeconds()
-    {
-        _time += Time.deltaTime;
-
-        return Mathf.RoundToInt(_time);
-    }
-
-    private bool IsRightCooldown()
-    {
-        if ((_timeInSeconds % _defaultSpawnCooldown) != 0
-            || _timeInSeconds <= _checkedTime)
-            return false;
-
-        return true;
-    }
 
     private void SpawnRandomCharacter()
     {
