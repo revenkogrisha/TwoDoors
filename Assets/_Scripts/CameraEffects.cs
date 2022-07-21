@@ -19,7 +19,11 @@ public class CameraEffects : MonoBehaviour
 
     #region MonoBehaviour
 
-    // TODO: OnValidate _shakeDuration
+    private void OnValidate()
+    {
+        if (_shakeDuration < 0f)
+            _shakeDuration = 0f;
+    }
 
     private void OnEnable()
     {
