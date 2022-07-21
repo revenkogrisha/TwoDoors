@@ -22,6 +22,7 @@ public class GameState : MonoBehaviour
         if (_score >= 10)
         {
             FinishLevel();
+            return;
         }
 
         EventHolder.RaiseCharacterPassed();
@@ -34,6 +35,7 @@ public class GameState : MonoBehaviour
         if (_score < 0)
         {
             GameOver();
+            return;
         }
 
         EventHolder.RaisePlayerMistaken();
