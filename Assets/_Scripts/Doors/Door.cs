@@ -28,7 +28,7 @@ public class Door : MonoBehaviour
 
     private void TryPassCharacter()
     {
-        if (_charactersWhoPasses.Contains(_character.Species))
+        if (_charactersWhoPasses.Contains(_character.Id))
         {
             PassCharacter();
             return;

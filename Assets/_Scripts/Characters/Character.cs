@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     private bool _isTryingToPass = false;
     private IMoveable _moveable;
 
-    public CharactersId Species
+    public CharactersId Id
     {
         get
         {
