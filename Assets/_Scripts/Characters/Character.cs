@@ -2,18 +2,17 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(IMoveable))]
 public class Character : MonoBehaviour
 {
-    [SerializeField] private CharactersId _species;
-    private bool _isTryingToPass = false;
+    [SerializeField] private CharactersId _id;
     private IMoveable _moveable;
+    private bool _isTryingToPass = false;
 
     public CharactersId Id
     {
         get
         {
-            return _species;
+            return _id;
         }
     }
 
@@ -24,6 +23,9 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         _moveable = GetComponent<IMoveable>();
+        if (_moveable == null)
+            throw new System.NullReferenceException(
+                "Character needs a sctipt implementing IMoveable");
     }
 
     private void FixedUpdate()
