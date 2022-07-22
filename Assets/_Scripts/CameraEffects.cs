@@ -68,6 +68,7 @@ public class CameraEffects : MonoBehaviour
             var shakedPosition = Random.insideUnitSphere * .9f;
             shakedPosition.z = _cameraPositionZ;
             _transform.position = shakedPosition;
+
             duration -= Time.deltaTime;
 
             yield return new WaitForSeconds(0f);
