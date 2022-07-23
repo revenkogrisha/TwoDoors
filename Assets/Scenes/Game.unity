@@ -1356,6 +1356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharactersInGame:
+  - {fileID: 1750394476896901744, guid: 7827db4b1907b2744872804f9a37f554, type: 3}
+  - {fileID: 1750394476896901744, guid: 6efbb8021af37594fa2d7a35a68ebcb6, type: 3}
   - {fileID: 1750394476896901744, guid: 7f9761b559706134bba93c22eab1fdb4, type: 3}
 --- !u!114 &1470179167
 MonoBehaviour:
