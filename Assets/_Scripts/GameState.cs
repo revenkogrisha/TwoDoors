@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    private int _score = 0;
     [SerializeField] private int _defaultReward = 1;
     [SerializeField] private int _defaultPunishment = 2;
+
+    private int _score = 0;
 
     #region MonoBehaviour
 
