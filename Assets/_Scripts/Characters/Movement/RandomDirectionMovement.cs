@@ -3,16 +3,21 @@ using UnityEngine;
 [RequireComponent(typeof(Timer))]
 public class RandomDirectionMovement : ForwardMovement
 {
-    [SerializeField] private int _nonChangingDirectionTime;
+    [SerializeField] private int _nonChangingDirectionTime = 2;
 
+    protected Timer _timer;
     private float _direction = 1;
-    private Timer _timer;
 
     #region MonoBehaviour
 
+    private void Awake()
+    {
+        base.Awake();
+        _timer = GetComponent<Timer>();
+    }
+
     private void OnEnable()
     {
-        _timer = GetComponent<Timer>();
         _timer.OnCooldownPassed += TryChangeDirection;
     }
 
@@ -28,12 +33,15 @@ public class RandomDirectionMovement : ForwardMovement
         if (_timer.TimeInSeconds < _nonChangingDirectionTime)
             return;
 
-        switch (Random.Range(0, 2))
+        if (Random.Range(0, 2) == 0)
         {
-            case 0:
-                _direction *= -1;
-                _speed *= _direction;
-                break;
+            ChangeDirection();
         }
+    }
+
+    private void ChangeDirection()
+    {
+        _direction *= -1;
+        _speed *= _direction;
     }
 }

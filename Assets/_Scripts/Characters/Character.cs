@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] private CharactersId _id;
+
     private IMoveable _moveable;
     private bool _isTryingToPass = false;
 

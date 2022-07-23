@@ -4,11 +4,12 @@ using UnityEngine;
 public class ForwardMovement : MonoBehaviour, IMoveable
 {
     [SerializeField] protected float _speed;
-    private Rigidbody2D _rigidbody2D;
+
+    protected Rigidbody2D _rigidbody2D;
 
     #region MonoBehaviour
 
-    private void Awake()
+    protected void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
