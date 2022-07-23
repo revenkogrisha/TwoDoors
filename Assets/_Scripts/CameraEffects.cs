@@ -4,6 +4,7 @@ using UnityEngine;
 public class CameraEffects : MonoBehaviour
 {
     [SerializeField] private float _shakeDuration = 1f;
+
     private float _zoomWhileShaking = 0.9f;
     private float _cameraPositionZ;
     private float _cameraDefaultSize;
