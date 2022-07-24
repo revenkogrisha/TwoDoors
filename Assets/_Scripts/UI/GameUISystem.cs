@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace TwoDoors.UI
 {
-    public class UISystem : MonoBehaviour
+    public class GameUISystem : MonoBehaviour
     {
         private const int _menuSceneId = 0;
 

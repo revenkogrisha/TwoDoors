@@ -527,6 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shakeDuration: 0.2
+  _shakeForce: 0.9
 --- !u!1 &565863033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9340cf554cbd06a418793d8ac92bb928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _doorId: 0
+  _id: 0
   _game: {fileID: 1786452848}
   _charactersWhoPasses: 01000000
 --- !u!212 &1161543000
@@ -1355,7 +1356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29aa4ecbe1adb26459157126b95242d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharactersInGame:
+  _charactersInGame:
   - {fileID: 1750394476896901744, guid: 7827db4b1907b2744872804f9a37f554, type: 3}
   - {fileID: 1750394476896901744, guid: 6efbb8021af37594fa2d7a35a68ebcb6, type: 3}
   - {fileID: 1750394476896901744, guid: 7f9761b559706134bba93c22eab1fdb4, type: 3}
@@ -1834,7 +1835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9340cf554cbd06a418793d8ac92bb928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _doorId: 0
+  _id: 0
   _game: {fileID: 1786452848}
   _charactersWhoPasses: 0000000002000000
 --- !u!61 &1916215052
