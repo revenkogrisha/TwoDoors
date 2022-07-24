@@ -28,6 +28,7 @@ namespace TwoDoors.Characters
         private void Awake()
         {
             _moveable = GetComponent<IMoveable>();
+
             if (_moveable == null)
                 throw new System.NullReferenceException(
                     "Character needs a sctipt implementing IMoveable");
