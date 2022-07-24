@@ -81,7 +81,7 @@ namespace TwoDoors.Scene
 
                 duration -= Time.deltaTime;
 
-                yield return new WaitForSeconds(0f);
+                yield return null;
             }
 
             _transform.position = _cameraDefaultPosition;
