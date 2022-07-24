@@ -9,9 +9,10 @@ namespace TwoDoors.Doors
 {
     public class Door : MonoBehaviour
     {
-        [SerializeField] private DoorsId _doorId;
+        [SerializeField] private DoorsId _id;
         [SerializeField] private GameState _game;
         [SerializeField] private List<CharactersId> _charactersWhoPasses;
+
         private Character _character;
 
         #region MonoBehaviour
