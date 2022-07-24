@@ -1,9 +1,11 @@
-using UnityEngine;
-
-public enum CharactersId
+namespace TwoDoors.Data
 {
-    human,
-    dog,
-    cat,
-    alien
+    public enum CharactersId
+    {
+        human,
+        dog,
+        cat,
+        alien
+    }
 }
+

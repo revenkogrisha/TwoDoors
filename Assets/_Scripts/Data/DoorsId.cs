@@ -1,7 +1,9 @@
-using UnityEngine;
-
-public enum DoorsId
+namespace TwoDoors.Data
 {
-    leftDoor,
-    rightDoor
+    public enum DoorsId
+    {
+        leftDoor,
+        rightDoor
+    }
 }
+

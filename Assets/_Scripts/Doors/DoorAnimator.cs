@@ -1,39 +1,42 @@
 using UnityEngine;
 
-public class DoorAnimator : MonoBehaviour
+namespace TwoDoors.Doors
 {
-    private bool _isCollided = false;
-
-    #region MonoBehaviour
-
-    private void OnMouseOver()
+    public class DoorAnimator : MonoBehaviour
     {
-        Open();
-    }
+        private bool _isCollided = false;
 
-    private void OnMouseExit()
-    {
-        _isCollided = false;
-    }
+        #region MonoBehaviour
 
-    private void OnTriggerExit2D()
-    {
-        Close();
-    }
+        private void OnMouseOver()
+        {
+            Open();
+        }
 
-    #endregion
+        private void OnMouseExit()
+        {
+            _isCollided = false;
+        }
 
-    private void Open()
-    {
-        if (_isCollided)
-            return;
-        _isCollided = true;
+        private void OnTriggerExit2D()
+        {
+            Close();
+        }
 
-        //Never do it
-    }
+        #endregion
 
-    private void Close()
-    {
-        //Better to do it
+        private void Open()
+        {
+            if (_isCollided)
+                return;
+            _isCollided = true;
+
+            //Never do it
+        }
+
+        private void Close()
+        {
+            //Better to do it
+        }
     }
 }

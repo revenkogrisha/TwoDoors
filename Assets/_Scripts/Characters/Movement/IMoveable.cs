@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public interface IMoveable
+namespace TwoDoors.Characters.Movement
 {
-    void Move();
+    public interface IMoveable
+    {
+        void Move();
+    }
 }

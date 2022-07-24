@@ -1,47 +1,51 @@
+using TwoDoors.Data;
 using UnityEngine;
 
-[RequireComponent(typeof(Timer))]
-public class RandomDirectionMovement : ForwardMovement
+namespace TwoDoors.Characters.Movement
 {
-    [SerializeField] private int _nonChangingDirectionTime = 2;
-
-    protected Timer _timer;
-    private float _direction = 1;
-
-    #region MonoBehaviour
-
-    private void Awake()
+    [RequireComponent(typeof(Timer))]
+    public class RandomDirectionMovement : ForwardMovement
     {
-        base.Awake();
-        _timer = GetComponent<Timer>();
-    }
+        [SerializeField] private int _nonChangingDirectionTime = 2;
 
-    private void OnEnable()
-    {
-        _timer.OnCooldownPassed += TryChangeDirection;
-    }
+        protected Timer _timer;
+        private float _direction = 1;
 
-    private void OnDisable()
-    {
-        _timer.OnCooldownPassed -= TryChangeDirection;
-    }
+        #region MonoBehaviour
 
-    #endregion
-
-    private void TryChangeDirection()
-    {
-        if (_timer.TimeInSeconds < _nonChangingDirectionTime)
-            return;
-
-        if (Random.Range(0, 2) == 0)
+        private void Awake()
         {
-            ChangeDirection();
+            base.Awake();
+            _timer = GetComponent<Timer>();
         }
-    }
 
-    private void ChangeDirection()
-    {
-        _direction *= -1;
-        _speed *= _direction;
+        private void OnEnable()
+        {
+            _timer.OnCooldownPassed += TryChangeDirection;
+        }
+
+        private void OnDisable()
+        {
+            _timer.OnCooldownPassed -= TryChangeDirection;
+        }
+
+        #endregion
+
+        private void TryChangeDirection()
+        {
+            if (_timer.TimeInSeconds < _nonChangingDirectionTime)
+                return;
+
+            if (Random.Range(0, 2) == 0)
+            {
+                ChangeDirection();
+            }
+        }
+
+        private void ChangeDirection()
+        {
+            _direction *= -1;
+            _speed *= _direction;
+        }
     }
 }

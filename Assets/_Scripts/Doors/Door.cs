@@ -1,52 +1,58 @@
 using System;
 using System.Collections.Generic;
+using TwoDoors.Characters;
+using TwoDoors.Data;
+using TwoDoors.Scene;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+namespace TwoDoors.Doors
 {
-    [SerializeField] private DoorsId _doorId;
-    [SerializeField] private GameState _game;
-    [SerializeField] private List<CharactersId> _charactersWhoPasses;
-    private Character _character;
-
-    #region MonoBehaviour
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public class Door : MonoBehaviour
     {
-        _character = other.GetComponent<Character>();
+        [SerializeField] private DoorsId _doorId;
+        [SerializeField] private GameState _game;
+        [SerializeField] private List<CharactersId> _charactersWhoPasses;
+        private Character _character;
 
-        if (_character == null)
-            throw new Exception("Character is null!");
+        #region MonoBehaviour
 
-        if (!_character.IsTryingToPass)
-            return;
-
-        TryPassCharacter();
-    }
-
-    #endregion
-
-    private void TryPassCharacter()
-    {
-        if (_charactersWhoPasses.Contains(_character.Id))
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            PassCharacter();
-            return;
+            _character = other.GetComponent<Character>();
+
+            if (_character == null)
+                throw new Exception("Character is null!");
+
+            if (!_character.IsTryingToPass)
+                return;
+
+            TryPassCharacter();
         }
 
-        SubtractScore();
-    }
+        #endregion
 
-    private void PassCharacter()
-    {
-        Destroy(_character.gameObject);
-        _game.AddScore();
-    }
+        private void TryPassCharacter()
+        {
+            if (_charactersWhoPasses.Contains(_character.Id))
+            {
+                PassCharacter();
+                return;
+            }
 
-    private void SubtractScore()
-    {
-        Destroy(_character.gameObject);
-        _game.SubtractScore();
+            SubtractScore();
+        }
+
+        private void PassCharacter()
+        {
+            Destroy(_character.gameObject);
+            _game.AddScore();
+        }
+
+        private void SubtractScore()
+        {
+            Destroy(_character.gameObject);
+            _game.SubtractScore();
+        }
     }
 }
 

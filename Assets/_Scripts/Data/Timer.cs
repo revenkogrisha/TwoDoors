@@ -1,50 +1,53 @@
 using System;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+namespace TwoDoors.Data
 {
-    public Action OnCooldownPassed;
-
-    [SerializeField] private int _cooldown = 2;
-
-    private float _time = 0;
-    private int _timeInSeconds = 0;
-    private int _checkedTime = 0;
-
-    public int TimeInSeconds
+    public class Timer : MonoBehaviour
     {
-        get { return _timeInSeconds; }
-        private set { _timeInSeconds = value; }
-    }
+        public Action OnCooldownPassed;
 
-    #region MonoBehaviour
+        [SerializeField] private int _cooldown = 2;
 
-    private void Update()
-    {
-        TimeInSeconds = GetTimeInSeconds();
+        private float _time = 0;
+        private int _timeInSeconds = 0;
+        private int _checkedTime = 0;
 
-        if (IsRightCooldown())
+        public int TimeInSeconds
         {
-            OnCooldownPassed?.Invoke();
-            _checkedTime = TimeInSeconds;
+            get { return _timeInSeconds; }
+            private set { _timeInSeconds = value; }
         }
-    }
 
-    #endregion
+        #region MonoBehaviour
 
-    private int GetTimeInSeconds()
-    {
-        _time += Time.deltaTime;
+        private void Update()
+        {
+            TimeInSeconds = GetTimeInSeconds();
 
-        return Mathf.RoundToInt(_time);
-    }
+            if (IsRightCooldown())
+            {
+                OnCooldownPassed?.Invoke();
+                _checkedTime = TimeInSeconds;
+            }
+        }
 
-    private bool IsRightCooldown()
-    {
-        if ((TimeInSeconds % _cooldown) != 0
-            || TimeInSeconds <= _checkedTime)
-            return false;
+        #endregion
 
-        return true;
+        private int GetTimeInSeconds()
+        {
+            _time += Time.deltaTime;
+
+            return Mathf.RoundToInt(_time);
+        }
+
+        private bool IsRightCooldown()
+        {
+            if ((TimeInSeconds % _cooldown) != 0
+                || TimeInSeconds <= _checkedTime)
+                return false;
+
+            return true;
+        }
     }
 }

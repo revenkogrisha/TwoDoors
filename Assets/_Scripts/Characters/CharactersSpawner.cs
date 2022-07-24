@@ -1,30 +1,35 @@
+using TwoDoors.Data;
 using UnityEngine;
 
-[RequireComponent(typeof(Timer))]
-public class CharactersSpawner : MonoBehaviour
+namespace TwoDoors.Characters
 {
-    public GameObject[] CharactersInGame;
-
-    private Timer _timer;
-
-    #region MonoBehaviour
-
-    private void OnEnable()
+    [RequireComponent(typeof(Timer))]
+    public class CharactersSpawner : MonoBehaviour
     {
-        _timer = GetComponent<Timer>();
-        _timer.OnCooldownPassed += SpawnRandomCharacter;
-    }
+        public GameObject[] CharactersInGame;
 
-    private void OnDisable()
-    {
-        _timer.OnCooldownPassed -= SpawnRandomCharacter;
-    }
+        private Timer _timer;
 
-    #endregion
+        #region MonoBehaviour
 
-    private void SpawnRandomCharacter()
-    {
-        int index = Random.Range(0, CharactersInGame.Length);
-        Instantiate(CharactersInGame[index]);
+        private void OnEnable()
+        {
+            _timer = GetComponent<Timer>();
+            _timer.OnCooldownPassed += SpawnRandomCharacter;
+        }
+
+        private void OnDisable()
+        {
+            _timer.OnCooldownPassed -= SpawnRandomCharacter;
+        }
+
+        #endregion
+
+        private void SpawnRandomCharacter()
+        {
+            int index = Random.Range(0, CharactersInGame.Length);
+            Instantiate(CharactersInGame[index]);
+        }
     }
 }
+
