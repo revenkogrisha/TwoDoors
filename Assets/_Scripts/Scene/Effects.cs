@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace TwoDoors.Scene
 {
-    public class CameraEffects : MonoBehaviour
+    public class Effects : MonoBehaviour
     {
         [SerializeField] private float _shakeDuration = 1f;
         [SerializeField] private float _shakeForce = 0.9f;
+        [SerializeField] private ParticleSystem _firework;
 
         private float _zoomWhileShaking = 0.9f;
         private float _cameraDefaultSize;
@@ -54,7 +55,7 @@ namespace TwoDoors.Scene
 
         private void RaiseParticles()
         {
-            
+            _firework.Play();
         }
 
         private void RaiseShake()
