@@ -7,9 +7,11 @@ namespace TwoDoors.Characters
     [RequireComponent(typeof(Collider2D))]
     public class DragableObject : MonoBehaviour
     {
+        public bool _isOnDrag = false;
         private Transform _transform;
         private Rigidbody2D _rigidbody2D;
-        private Collider2D _collider2D;
+
+        public bool IsOnDrag => _isOnDrag;
 
         #region MonoBehaviour
 
@@ -17,30 +19,31 @@ namespace TwoDoors.Characters
         {
             _transform = transform;
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            _collider2D = GetComponent<Collider2D>();
         }
 
         private void OnEnable()
         {
-            EventHolder.OnGameFinished += DisableMovementAndCollider;
-            EventHolder.OnGameOvered += DisableMovementAndCollider;
+            EventHolder.OnGameFinished += DisableMovement;
+            EventHolder.OnGameOvered += DisableMovement;
         }
 
         private void OnDisable()
         {
-            EventHolder.OnGameFinished -= DisableMovementAndCollider;
-            EventHolder.OnGameOvered -= DisableMovementAndCollider;
+            EventHolder.OnGameFinished -= DisableMovement;
+            EventHolder.OnGameOvered -= DisableMovement;
         }
 
         private void OnMouseDrag()
         {
             SetTransformToTouchPoint();
-            DisableMovementAndCollider();
+            DisableMovement();
+            _isOnDrag = true;
         }
 
         private void OnMouseUp()
         {
-            EnableMovementAndCollider();
+            EnableMovement();
+            _isOnDrag = false;
         }
 
         #endregion
@@ -54,16 +57,14 @@ namespace TwoDoors.Characters
             _transform.position = _touchPoint;
         }
 
-        private void DisableMovementAndCollider()
+        private void DisableMovement()
         {
-            _rigidbody2D.simulated = false;
-            _collider2D.enabled = false;
+            _rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         }
 
-        private void EnableMovementAndCollider()
+        private void EnableMovement()
         {
-            _rigidbody2D.simulated = true;
-            _collider2D.enabled = true;
+            _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 }

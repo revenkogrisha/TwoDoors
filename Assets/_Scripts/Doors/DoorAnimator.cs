@@ -1,21 +1,28 @@
+using TwoDoors.Characters;
 using UnityEngine;
 
 namespace TwoDoors.Doors
 {
     public class DoorAnimator : MonoBehaviour
     {
-        private bool _isCollided = false;
+        private const string Opened = nameof(Opened);
+
+        [SerializeField] private Animator _animator;
 
         #region MonoBehaviour
 
-        private void OnMouseOver()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Open();
-        }
+            var other = collision.gameObject;
+            var dragable = other.GetComponent<DragableObject>();
 
-        private void OnMouseExit()
-        {
-            _isCollided = false;
+            if (dragable == null) 
+                return;
+
+            if (!dragable.IsOnDrag)
+                return;
+                
+            Open();
         }
 
         private void OnTriggerExit2D()
@@ -25,18 +32,14 @@ namespace TwoDoors.Doors
 
         #endregion
 
-        private void Open()
+        public void Open()
         {
-            if (_isCollided)
-                return;
-            _isCollided = true;
-
-            //Never do it
+            _animator.SetBool(Opened, true);
         }
 
         private void Close()
         {
-            //Better to do it
+            _animator.SetBool(Opened, false);
         }
     }
 }
