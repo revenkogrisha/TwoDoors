@@ -1,3 +1,4 @@
+using TwoDoors.Data;
 using UnityEngine;
 
 namespace TwoDoors.Characters
@@ -17,6 +18,18 @@ namespace TwoDoors.Characters
             _transform = transform;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
+        }
+
+        private void OnEnable()
+        {
+            EventHolder.OnGameFinished += DisableMovementAndCollider;
+            EventHolder.OnGameOvered += DisableMovementAndCollider;
+        }
+
+        private void OnDisable()
+        {
+            EventHolder.OnGameFinished -= DisableMovementAndCollider;
+            EventHolder.OnGameOvered -= DisableMovementAndCollider;
         }
 
         private void OnMouseDrag()
