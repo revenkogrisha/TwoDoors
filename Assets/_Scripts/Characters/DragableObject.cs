@@ -7,7 +7,7 @@ namespace TwoDoors.Characters
     [RequireComponent(typeof(Collider2D))]
     public class DragableObject : MonoBehaviour
     {
-        public bool _isOnDrag = false;
+        private bool _isOnDrag = false;
         private Transform _transform;
         private Rigidbody2D _rigidbody2D;
 

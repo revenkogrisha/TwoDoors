@@ -7,15 +7,25 @@ using UnityEngine;
 
 namespace TwoDoors.Doors
 {
+    [RequireComponent(typeof(DoorAnimator))]
     public class Door : MonoBehaviour
     {
         [SerializeField] private DoorsId _id;
         [SerializeField] private GameState _game;
         [SerializeField] private List<CharactersId> _charactersWhoPasses;
 
+        private Character _characterEntered;
+        private DoorAnimator _doorAnimator;
         private Character _character;
 
+        public bool IsCharacterEntered => _characterEntered != null;
+
         #region MonoBehaviour
+
+        private void Awake()
+        {
+            _doorAnimator = GetComponent<DoorAnimator>();
+        }
 
         private void OnTriggerStay2D(Collider2D other)
         {
@@ -31,6 +41,14 @@ namespace TwoDoors.Doors
         }
 
         #endregion
+
+        public void Open() => _doorAnimator.Open();
+
+        public void Close() => _doorAnimator.Close();
+
+        public void SetEnteredCharacter(Character character) => _characterEntered = character;
+
+        public void RemoveEnteredCharacter() => _characterEntered = null;
 
         private void TryPassCharacter()
         {
