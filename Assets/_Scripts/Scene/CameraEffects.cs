@@ -10,16 +10,13 @@ namespace TwoDoors.Scene
         [SerializeField] private float _shakeForce = 0.9f;
 
         private float _zoomWhileShaking = 0.9f;
-        private float _cameraPositionZ;
         private float _cameraDefaultSize;
         private Vector3 _cameraDefaultPosition;
-        private Transform _transform;
-        private Camera _camera;
 
         private float OrthographicSize
         {
-            get => _camera.orthographicSize;
-            set => _camera.orthographicSize = value;
+            get => Camera.main.orthographicSize;
+            set => Camera.main.orthographicSize = value;
         }
 
         #region MonoBehaviour
@@ -37,30 +34,27 @@ namespace TwoDoors.Scene
 
         private void OnEnable()
         {
-            EventHolder.OnCharacterPassed += RaiseZoom;
+            EventHolder.OnCharacterPassed += RaiseParticles;
             EventHolder.OnPlayerMistaken += RaiseShake;
         }
 
         private void OnDisable()
         {
-            EventHolder.OnCharacterPassed -= RaiseZoom;
+            EventHolder.OnCharacterPassed -= RaiseParticles;
             EventHolder.OnPlayerMistaken -= RaiseShake;
         }
 
         private void Awake()
         {
-            _camera = Camera.main;
-            _transform = transform;
-            _cameraDefaultPosition = _transform.position;
-            _cameraDefaultSize = _camera.orthographicSize;
-            _cameraPositionZ = _transform.position.z;
+            _cameraDefaultPosition = transform.position;
+            _cameraDefaultSize = Camera.main.orthographicSize;
         }
 
         #endregion
 
-        private void RaiseZoom()
+        private void RaiseParticles()
         {
-            // TODO: mb mojno ubrat ya podumau
+            
         }
 
         private void RaiseShake()
@@ -76,15 +70,15 @@ namespace TwoDoors.Scene
             while (duration > 0)
             {
                 var shakedPosition = Random.insideUnitSphere * _shakeForce;
-                shakedPosition.z = _cameraPositionZ;
-                _transform.position = shakedPosition;
+                shakedPosition.z = _cameraDefaultPosition.z;
+                transform.position = shakedPosition;
 
                 duration -= Time.deltaTime;
 
                 yield return null;
             }
 
-            _transform.position = _cameraDefaultPosition;
+            transform.position = _cameraDefaultPosition;
             OrthographicSize = _cameraDefaultSize;
         }
     }

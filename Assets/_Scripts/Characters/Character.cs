@@ -13,13 +13,7 @@ namespace TwoDoors.Characters
         private IMoveable _moveable;
         private bool _isTryingToPass = false;
 
-        public CharactersId Id
-        {
-            get
-            {
-                return _id;
-            }
-        }
+        public CharactersId Id => _id;
 
         public bool IsTryingToPass => _isTryingToPass;
 
