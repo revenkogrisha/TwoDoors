@@ -34,10 +34,8 @@ namespace TwoDoors.Doors
             if (_character == null)
                 throw new Exception("Character is null!");
 
-            if (!_character.IsTryingToPass)
-                return;
-
-            TryPassCharacter();
+            if (_character.IsTryingToPass)
+                TryPassCharacter();
         }
 
         #endregion

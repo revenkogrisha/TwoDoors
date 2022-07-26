@@ -11,13 +11,17 @@ namespace TwoDoors.Doors
 
         public void Open()
         {
-            _animator.enabled = true;
+            if (!_animator.enabled)
+                _animator.enabled = true;
+
             _animator.SetBool(Opened, true);
         }
 
         public void Close()
         {
-            _animator.enabled = true;
+            if (!_animator.enabled)
+                _animator.enabled = true;
+
             _animator.SetBool(Opened, false);
         }
     }
