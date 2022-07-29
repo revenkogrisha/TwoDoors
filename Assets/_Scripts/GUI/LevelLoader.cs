@@ -35,6 +35,7 @@ namespace TwoDoors.UI
             _menu.SetActive(false);
             _loadingScreen.SetActive(true);
 
+
             StartCoroutine(LoadLevelAsync(index));
         }
 

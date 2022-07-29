@@ -1,10 +1,13 @@
 using TwoDoors.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TwoDoors.Scene
 {
     public class GameState : MonoBehaviour
     {
+        public const string LastFinishedLevel = nameof(LastFinishedLevel);
+
         [SerializeField] private int _defaultReward = 1;
         [SerializeField] private int _defaultPunishment = 2;
 
@@ -18,7 +21,7 @@ namespace TwoDoors.Scene
         }
 
         #endregion
-
+        
         public void AddScore()
         {
             _score += _defaultReward;
@@ -48,6 +51,10 @@ namespace TwoDoors.Scene
         private void FinishLevel()
         {
             Time.timeScale = 0;
+
+            var sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            PlayerPrefs.SetInt(LastFinishedLevel, sceneIndex);
+
             EventHolder.RaiseGameFinish();
         }
 
