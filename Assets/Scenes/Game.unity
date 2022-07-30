@@ -6620,6 +6620,7 @@ GameObject:
   - component: {fileID: 1470179165}
   - component: {fileID: 1470179167}
   - component: {fileID: 1470179166}
+  - component: {fileID: 1470179168}
   m_Layer: 0
   m_Name: CharactersSpawner
   m_TagString: Untagged
@@ -6654,11 +6655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29aa4ecbe1adb26459157126b95242d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charactersInGame:
-  - {fileID: 1750394476896901744, guid: 7827db4b1907b2744872804f9a37f554, type: 3}
-  - {fileID: 1750394476896901744, guid: 6efbb8021af37594fa2d7a35a68ebcb6, type: 3}
-  - {fileID: 1750394476896901744, guid: 7f9761b559706134bba93c22eab1fdb4, type: 3}
-  - {fileID: 1750394476896901744, guid: 90f5b13b59a2e4544951671af4e307da, type: 3}
+  _characterFactory: {fileID: 1470179168}
+  _charactersInGame: 00000000010000000200000003000000
 --- !u!114 &1470179167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6672,6 +6670,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 2
+--- !u!114 &1470179168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470179164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6936d57671da8ff46be99a46cae3831e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _charactersPrefabs:
+  - {fileID: 1750394476896901744, guid: 90f5b13b59a2e4544951671af4e307da, type: 3}
+  - {fileID: 1750394476896901744, guid: 7f9761b559706134bba93c22eab1fdb4, type: 3}
+  - {fileID: 1750394476896901744, guid: 6efbb8021af37594fa2d7a35a68ebcb6, type: 3}
+  - {fileID: 1750394476896901744, guid: 7827db4b1907b2744872804f9a37f554, type: 3}
 --- !u!1 &1491854292
 GameObject:
   m_ObjectHideFlags: 0
@@ -7287,8 +7302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29aa4ecbe1adb26459157126b95242d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charactersInGame:
-  - {fileID: 1750394476896901744, guid: 90f5b13b59a2e4544951671af4e307da, type: 3}
+  _characterFactory: {fileID: 0}
+  _charactersInGame: 00000000
 --- !u!114 &1923346029
 MonoBehaviour:
   m_ObjectHideFlags: 0

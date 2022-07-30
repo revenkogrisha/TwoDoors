@@ -6,15 +6,20 @@ namespace TwoDoors.Characters
     [RequireComponent(typeof(Timer))]
     public class CharactersSpawner : MonoBehaviour
     {
-        [SerializeField] private GameObject[] _charactersInGame;
+        [SerializeField] private CharacterFactory _characterFactory;
+        [SerializeField] private CharactersId[] _charactersInGame;
 
         private Timer _timer;
 
         #region MonoBehaviour
 
-        private void OnEnable()
+        private void Awake()
         {
             _timer = GetComponent<Timer>();
+        }
+
+        private void OnEnable()
+        {
             _timer.OnCooldownPassed += SpawnRandomCharacter;
         }
 
@@ -28,7 +33,10 @@ namespace TwoDoors.Characters
         private void SpawnRandomCharacter()
         {
             int index = Random.Range(0, _charactersInGame.Length);
-            Instantiate(_charactersInGame[index]);
+            var id = _charactersInGame[index];
+            var characterObject = _characterFactory.GetCharacter(id);
+
+            Instantiate(characterObject);
         }
     }
 }
