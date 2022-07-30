@@ -6,7 +6,7 @@ namespace TwoDoors.Scene
 {
     public class GameState : MonoBehaviour
     {
-        public const string LastFinishedLevel = nameof(LastFinishedLevel);
+        private const string LastFinishedLevel = nameof(LastFinishedLevel);
 
         [SerializeField] private int _defaultReward = 1;
         [SerializeField] private int _defaultPunishment = 2;

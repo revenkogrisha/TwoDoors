@@ -1,14 +1,18 @@
-using TwoDoors.Scene;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelUnlocker : MonoBehaviour
 {
+    private const string LastFinishedLevel = nameof(LastFinishedLevel);
+
+
     [SerializeField] private Button[] _allButtons;
+
+    #region MonoBehaviour
 
     private void Start()
     {
-        var lastFinishedLevelIndex = PlayerPrefs.GetInt(GameState.LastFinishedLevel, 0);
+        var lastFinishedLevelIndex = PlayerPrefs.GetInt(LastFinishedLevel, 0);
 
         for (int i = 0; i < lastFinishedLevelIndex; i++)
         {
@@ -21,4 +25,6 @@ public class LevelUnlocker : MonoBehaviour
             _allButtons[i + 1].interactable = true;
         }
     }
+
+    #endregion
 }

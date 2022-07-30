@@ -1,4 +1,3 @@
-using TwoDoors.Characters;
 using UnityEngine;
 
 namespace TwoDoors.Doors
