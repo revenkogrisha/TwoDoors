@@ -5,7 +5,6 @@ public class LevelUnlocker : MonoBehaviour
 {
     private const string LastFinishedLevel = nameof(LastFinishedLevel);
 
-
     [SerializeField] private Button[] _allButtons;
 
     #region MonoBehaviour
