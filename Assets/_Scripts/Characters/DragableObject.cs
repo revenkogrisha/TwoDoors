@@ -46,7 +46,6 @@ namespace TwoDoors.Characters
         }
 
         #endregion
-        
 
         private void SetTransformToTouchPoint()
         {
@@ -62,15 +61,7 @@ namespace TwoDoors.Characters
 
         private void DisableMovement()
         {
-            try
-            {
-                _rigidbody2D.bodyType = RigidbodyType2D.Kinematic; 
-            }
-            catch (System.Exception ex)
-            {
-                print(gameObject.name);
-                print(ex.Message);
-            }
+            _rigidbody2D.bodyType = RigidbodyType2D.Kinematic; 
         }
 
         private void EnableMovement()
