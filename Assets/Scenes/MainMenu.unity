@@ -1032,8 +1032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e42b5d9561944eb995ae50357944e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelIndex: 2
-  _button: {fileID: 957844873}
+  _levelIndex: 1
+  _levelLoader: {fileID: 163389131}
 --- !u!114 &957844873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,8 +1253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e42b5d9561944eb995ae50357944e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelIndex: 2
-  _button: {fileID: 1101665012}
+  _levelIndex: 1
+  _levelLoader: {fileID: 163389131}
 --- !u!114 &1101665012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,8 +1525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e42b5d9561944eb995ae50357944e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelIndex: 2
-  _button: {fileID: 1252264737}
+  _levelIndex: 1
+  _levelLoader: {fileID: 163389131}
 --- !u!114 &1252264737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2158,8 +2158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e42b5d9561944eb995ae50357944e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelIndex: 2
-  _button: {fileID: 1553619845}
+  _levelIndex: 1
+  _levelLoader: {fileID: 163389131}
 --- !u!114 &1553619845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2468,8 +2468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e42b5d9561944eb995ae50357944e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelIndex: 2
-  _button: {fileID: 2089135369}
+  _levelIndex: 1
+  _levelLoader: {fileID: 163389131}
 --- !u!114 &2089135369
 MonoBehaviour:
   m_ObjectHideFlags: 0

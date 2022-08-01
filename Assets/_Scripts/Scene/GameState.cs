@@ -1,3 +1,4 @@
+using System;
 using TwoDoors.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,11 @@ namespace TwoDoors.Scene
         [SerializeField] private int _defaultPunishment = 2;
 
         private int _score = 0;
+
+        public event Action OnGameFinished;
+        public event Action OnGameOvered;
+        public event Action OnCharacterPassed;
+        public event Action OnPlayerMistaken;
 
         #region MonoBehaviour
 
@@ -32,7 +38,7 @@ namespace TwoDoors.Scene
                 return;
             }
 
-            EventHolder.RaiseCharacterPassed();
+            OnCharacterPassed?.Invoke();
         }
 
         public void SubtractScore()
@@ -45,23 +51,22 @@ namespace TwoDoors.Scene
                 return;
             }
 
-            EventHolder.RaisePlayerMistaken();
+            OnPlayerMistaken?.Invoke();
         }
 
         private void FinishLevel()
         {
             Time.timeScale = 0;
+            OnGameFinished?.Invoke();
 
             var sceneIndex = SceneManager.GetActiveScene().buildIndex;
             PlayerPrefs.SetInt(LastFinishedLevel, sceneIndex);
-
-            EventHolder.RaiseGameFinish();
         }
 
         private void GameOver()
         {
             Time.timeScale = 0;
-            EventHolder.RaiseGameOver();
+            OnGameOvered?.Invoke();
         }
     }
 }

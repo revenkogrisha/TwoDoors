@@ -16,21 +16,7 @@ namespace TwoDoors.UI
 
         private AsyncOperation _loadingOperation;
 
-        #region MonoBehaviour
-
-        private void OnEnable()
-        {
-            EventHolder.OnLoadingStarted += StartLoading;
-        }
-
-        private void OnDisable()
-        {
-            EventHolder.OnLoadingStarted -= StartLoading;
-        }
-
-        #endregion
-
-        private void StartLoading(int index)
+        public void StartLoading(int index)
         {
             _menu.SetActive(false);
             _loadingScreen.SetActive(true);

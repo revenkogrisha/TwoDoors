@@ -1,15 +1,22 @@
-using TwoDoors.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace TwoDoors.UI
 {
+    [RequireComponent(typeof(Button))]
     public class PlayLevelButton : MonoBehaviour
     {
         [SerializeField] private int _levelIndex;
-        [SerializeField] private Button _button;
+        [SerializeField] private LevelLoader _levelLoader;
+
+        private Button _button;
 
         #region MonoBehaviour
+
+        private void Awake()
+        {
+            _button = GetComponent<Button>();
+        }
 
         private void OnEnable()
         {
@@ -25,7 +32,7 @@ namespace TwoDoors.UI
 
         private void PlayLevel()
         {
-            EventHolder.RaiseLoadingStarted(_levelIndex);
+            _levelLoader.StartLoading(_levelIndex);
         }
     }
 }

@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1368832523439433693}
   - component: {fileID: 5363539754581627647}
   - component: {fileID: 633167452131744104}
-  - component: {fileID: 7448763038572620801}
+  - component: {fileID: 4326805631356836474}
   m_Layer: 6
-  m_Name: Dog
+  m_Name: Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.90104896, b: 0.504717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,8 +103,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0046772957, y: 0.38355446}
-  m_Size: {x: 1.3835554, y: 2.7671108}
+  m_Offset: {x: 0, y: 0.52125907}
+  m_Size: {x: 1.5, y: 3.0204406}
   m_Direction: 0
 --- !u!50 &1750394476896901748
 Rigidbody2D:
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f806b6855bf1af945af43951515b57aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _game: {fileID: 5775729341169752449, guid: b5331a0308b882841bf75200eaab01f3, type: 3}
 --- !u!114 &5363539754581627647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdb3ae9b61366d418aaea586ff6327d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 1
+  _id: 2
 --- !u!114 &633167452131744104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 1
---- !u!114 &7448763038572620801
+--- !u!114 &4326805631356836474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,8 +175,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1750394476896901744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51584f6d29195964b99f3af82b6d59f8, type: 3}
+  m_Script: {fileID: 11500000, guid: bfb0df105b1d5f14b80322f19899f7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: -6
-  _nonChangingDirectionTime: 2
+  _speed: -5
+  _jumpForceRange: {x: 5, y: 15}
