@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using TwoDoors.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

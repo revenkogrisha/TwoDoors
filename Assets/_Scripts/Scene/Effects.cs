@@ -10,7 +10,8 @@ namespace TwoDoors.Scene
         [SerializeField] private float _shakeForce = 0.9f;
         [SerializeField] private ParticleSystem _firework;
 
-        private float _zoomWhileShaking = 0.9f;
+        private readonly float _zoomWhileShaking = 0.9f;
+
         private float _cameraDefaultSize;
         private Vector3 _cameraDefaultPosition;
 
