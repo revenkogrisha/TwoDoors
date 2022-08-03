@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+    public static Pause Instance;
+
     [SerializeField] private GameObject _pausePanel;
 
     private bool _isOnPause = false;
@@ -10,13 +12,26 @@ public class Pause : MonoBehaviour
     public event Action OnGamePaused;
     public event Action OnGameContinued;
 
+    #region MonoBehaviour
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != null
+            && Instance != this)
+            throw new Exception($"Singleton initialize exception in {gameObject.name}!");
+    }
+
+    #endregion
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             TryPause();
     }
 
-    private void TryPause()
+    public void TryPause()
     {
         if (!_isOnPause)
         {

@@ -6,11 +6,12 @@ namespace TwoDoors.Scene
 {
     public class GameState : MonoBehaviour
     {
+        public static GameState Instance;
+
         private const string LastFinishedLevel = nameof(LastFinishedLevel);
 
         [SerializeField] private int _defaultReward = 1;
         [SerializeField] private int _defaultPunishment = 2;
-        [SerializeField] private Pause _pause;
 
         private int _score = 0;
 
@@ -23,17 +24,25 @@ namespace TwoDoors.Scene
 
         private void Awake()
         {
+            if (Instance == null)
+                Instance = this;
+            else if (Instance != null
+                && Instance != this)
+                throw new Exception($"Singleton initialize exception in {gameObject.name}!");
+
             ContinueGame();
         }
 
         private void OnEnable()
         {
-            _pause.OnGamePaused += PauseGame;
+            Pause.Instance.OnGamePaused += PauseGame;
+            Pause.Instance.OnGameContinued += ContinueGame;
         }
 
         private void OnDisable()
         {
-            _pause.OnGamePaused -= PauseGame;
+            Pause.Instance.OnGamePaused -= PauseGame;
+            Pause.Instance.OnGameContinued -= ContinueGame;
         }
 
         #endregion
