@@ -1,5 +1,4 @@
 using System;
-using TwoDoors.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +10,7 @@ namespace TwoDoors.Scene
 
         [SerializeField] private int _defaultReward = 1;
         [SerializeField] private int _defaultPunishment = 2;
+        [SerializeField] private Pause _pause;
 
         private int _score = 0;
 
@@ -23,11 +23,21 @@ namespace TwoDoors.Scene
 
         private void Awake()
         {
-            Time.timeScale = 1;
+            ContinueGame();
+        }
+
+        private void OnEnable()
+        {
+            _pause.OnGamePaused += PauseGame;
+        }
+
+        private void OnDisable()
+        {
+            _pause.OnGamePaused -= PauseGame;
         }
 
         #endregion
-        
+
         public void AddScore()
         {
             _score += _defaultReward;
@@ -56,7 +66,7 @@ namespace TwoDoors.Scene
 
         private void FinishLevel()
         {
-            Time.timeScale = 0;
+            PauseGame();
             OnGameFinished?.Invoke();
 
             var sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -65,8 +75,18 @@ namespace TwoDoors.Scene
 
         private void GameOver()
         {
-            Time.timeScale = 0;
+            PauseGame();
             OnGameOvered?.Invoke();
+        }
+
+        private void PauseGame()
+        {
+            Time.timeScale = 0f;
+        }
+
+        private void ContinueGame()
+        {
+            Time.timeScale = 1f;
         }
     }
 }
