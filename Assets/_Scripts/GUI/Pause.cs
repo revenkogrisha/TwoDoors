@@ -12,9 +12,12 @@ public class Pause : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.Escape))
-            return;
+        if (Input.GetKeyDown(KeyCode.Escape))
+            TryPause();
+    }
 
+    private void TryPause()
+    {
         if (!_isOnPause)
         {
             PauseGame();
@@ -27,13 +30,16 @@ public class Pause : MonoBehaviour
 
     private void PauseGame()
     {
-        OnGamePaused?.Invoke();
         _pausePanel.SetActive(true);
+        _isOnPause = true;
+        OnGamePaused?.Invoke();
     }
 
     private void ContinueGame()
     {
-        OnGameContinued?.Invoke();
         _pausePanel.SetActive(false);
+        _isOnPause = false;
+        OnGameContinued?.Invoke();
+
     }
 }
