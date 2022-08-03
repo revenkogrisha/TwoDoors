@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _game: {fileID: 5775729341169752449, guid: b5331a0308b882841bf75200eaab01f3, type: 3}
+  _pause: {fileID: 552692893110857393, guid: ae2f01f6d883d1d469f56eb9d8c49e44, type: 3}
 --- !u!114 &5363539754581627647
 MonoBehaviour:
   m_ObjectHideFlags: 0

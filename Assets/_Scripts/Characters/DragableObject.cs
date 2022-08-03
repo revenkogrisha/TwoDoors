@@ -7,6 +7,7 @@ namespace TwoDoors.Characters
     public class DragableObject : MonoBehaviour
     {
         [SerializeField] private GameState _game;
+        [SerializeField] private Pause _pause;
         private bool _isOnDrag = false;
         private Transform _transform;
         private Rigidbody2D _rigidbody2D;
@@ -24,12 +25,16 @@ namespace TwoDoors.Characters
         {
             _game.OnGameFinished += DisableMovement;
             _game.OnGameOvered += DisableMovement;
+            _pause.OnGamePaused += DisableMovement;
+            _pause.OnGameContinued += EnableMovement;
         }
 
         private void OnDisable()
         {
             _game.OnGameFinished -= DisableMovement;
             _game.OnGameOvered -= DisableMovement;
+            _pause.OnGamePaused -= DisableMovement;
+            _pause.OnGameContinued -= EnableMovement;
         }
 
         private void OnMouseDrag()
