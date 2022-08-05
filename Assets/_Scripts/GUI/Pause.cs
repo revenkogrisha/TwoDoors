@@ -55,6 +55,5 @@ public class Pause : MonoBehaviour
         _pausePanel.SetActive(false);
         _isOnPause = false;
         OnGameContinued?.Invoke();
-
     }
 }
