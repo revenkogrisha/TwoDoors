@@ -1,4 +1,4 @@
-namespace TwoDoors.Data
+namespace TwoDoors.Doors
 {
     public enum DoorsId
     {

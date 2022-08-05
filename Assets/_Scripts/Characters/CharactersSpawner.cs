@@ -1,4 +1,4 @@
-using TwoDoors.Data;
+using TwoDoors.Scene;
 using UnityEngine;
 
 namespace TwoDoors.Characters

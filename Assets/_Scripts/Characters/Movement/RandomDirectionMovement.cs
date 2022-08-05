@@ -1,5 +1,5 @@
-using TwoDoors.Data;
 using UnityEngine;
+using TwoDoors.Scene;
 
 namespace TwoDoors.Characters.Movement
 {
