@@ -21,17 +21,17 @@ namespace TwoDoors.Characters.Movement
 
         private void OnEnable()
         {
-            _timer.OnCooldownPassed += TryJumpAndChangeDirection;
+            _timer.OnCooldownPassed += TryJump;
         }
 
         private void OnDisable()
         {
-            _timer.OnCooldownPassed -= TryJumpAndChangeDirection;
+            _timer.OnCooldownPassed -= TryJump;
         }
 
         #endregion
 
-        private void TryJumpAndChangeDirection()
+        private void TryJump()
         {
             var random = Random.Range(0, 2);
 

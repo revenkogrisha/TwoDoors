@@ -9,7 +9,6 @@ namespace TwoDoors.Characters.Movement
         [SerializeField] private int _nonChangingDirectionTime = 2;
 
         protected Timer _timer;
-        private float _direction = 1;
 
         #region MonoBehaviour
 
@@ -44,8 +43,8 @@ namespace TwoDoors.Characters.Movement
 
         private void ChangeDirection()
         {
-            _direction *= -1;
-            Speed *= _direction;
+            var direction = (float)Direction * -1f;
+            Direction = (MovementDirection)direction;
         }
     }
 }
