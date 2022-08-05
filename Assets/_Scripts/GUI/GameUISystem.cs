@@ -1,4 +1,3 @@
-using TwoDoors.Data;
 using TwoDoors.Scene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +8,6 @@ namespace TwoDoors.UI
     {
         private const int _menuSceneId = 0;
 
-        [SerializeField] private GameState _game;
         [SerializeField] private GameObject _finishPanel;
         [SerializeField] private GameObject _gameOverPanel;
 
@@ -17,14 +15,14 @@ namespace TwoDoors.UI
 
         private void OnEnable()
         {
-            _game.OnGameFinished += OpenFinishPanel;
-            _game.OnGameOvered += OpenGameOverPanel;
+            GameState.Instance.OnGameFinished += OpenFinishPanel;
+            GameState.Instance.OnGameOvered += OpenGameOverPanel;
         }
 
         private void OnDisable()
         {
-            _game.OnGameFinished -= OpenFinishPanel;
-            _game.OnGameOvered -= OpenGameOverPanel;
+            GameState.Instance.OnGameFinished -= OpenFinishPanel;
+            GameState.Instance.OnGameOvered -= OpenGameOverPanel;
         }
 
         #endregion

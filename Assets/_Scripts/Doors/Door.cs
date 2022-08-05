@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using TwoDoors.Characters;
-using TwoDoors.Data;
 using TwoDoors.Scene;
 using UnityEngine;
 
@@ -11,7 +10,6 @@ namespace TwoDoors.Doors
     public class Door : MonoBehaviour
     {
         [SerializeField] private DoorsId _id;
-        [SerializeField] private GameState _game;
         [SerializeField] private List<CharactersId> _charactersWhoPasses;
 
         private Character _characterEntered;
@@ -62,13 +60,13 @@ namespace TwoDoors.Doors
         private void PassCharacter()
         {
             Destroy(_character.gameObject);
-            _game.AddScore();
+            GameState.Instance.AddScore();
         }
 
         private void SubtractScore()
         {
             Destroy(_character.gameObject);
-            _game.SubtractScore();
+            GameState.Instance.SubtractScore();
         }
     }
 }

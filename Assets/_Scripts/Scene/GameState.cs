@@ -12,6 +12,7 @@ namespace TwoDoors.Scene
 
         [SerializeField] private int _defaultReward = 1;
         [SerializeField] private int _defaultPunishment = 2;
+        [SerializeField] private GameObject _pausePanel;
 
         private int _score = 0;
 
@@ -20,10 +21,14 @@ namespace TwoDoors.Scene
         public event Action OnCharacterPassed;
         public event Action OnPlayerMistaken;
 
+        public GamePause Pause { get; private set; }
+
         #region MonoBehaviour
 
         private void Awake()
         {
+            Pause = new(_pausePanel);
+
             if (Instance == null)
                 Instance = this;
             else if (Instance != null
@@ -35,14 +40,14 @@ namespace TwoDoors.Scene
 
         private void OnEnable()
         {
-            Pause.Instance.OnGamePaused += PauseGame;
-            Pause.Instance.OnGameContinued += ContinueGame;
+            Pause.OnGamePaused += PauseGame;
+            Pause.OnGameContinued += ContinueGame;
         }
 
         private void OnDisable()
         {
-            Pause.Instance.OnGamePaused -= PauseGame;
-            Pause.Instance.OnGameContinued -= ContinueGame;
+            Pause.OnGamePaused -= PauseGame;
+            Pause.OnGameContinued -= ContinueGame;
         }
 
         #endregion

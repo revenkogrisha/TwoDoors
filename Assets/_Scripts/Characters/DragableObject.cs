@@ -24,18 +24,24 @@ namespace TwoDoors.Characters
         }
         private void OnEnable()
         {
-            GameState.Instance.OnGameFinished += DisableDrag;
-            GameState.Instance.OnGameOvered += DisableDrag;
-            Pause.Instance.OnGamePaused += DisableDrag;
-            Pause.Instance.OnGameContinued += EnableDrag;
+            var gameState = GameState.Instance;
+            gameState.OnGameFinished += DisableDrag;
+            gameState.OnGameOvered += DisableDrag;
+
+            var pause = gameState.Pause;
+            pause.OnGamePaused += DisableDrag;
+            pause.OnGameContinued += EnableDrag;
         }
 
         private void OnDisable()
         {
-            GameState.Instance.OnGameFinished -= DisableDrag;
-            GameState.Instance.OnGameOvered -= DisableDrag;
-            Pause.Instance.OnGamePaused -= DisableDrag;
-            Pause.Instance.OnGameContinued -= EnableDrag;
+            var gameState = GameState.Instance;
+            gameState.OnGameFinished -= DisableDrag;
+            gameState.OnGameOvered -= DisableDrag;
+
+            var pause = gameState.Pause;
+            pause.OnGamePaused -= DisableDrag;
+            pause.OnGameContinued -= EnableDrag;
         }
 
         private void OnMouseDrag()
