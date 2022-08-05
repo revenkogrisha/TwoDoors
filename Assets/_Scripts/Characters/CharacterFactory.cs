@@ -1,4 +1,3 @@
-using TwoDoors.Data;
 using UnityEngine;
 
 namespace TwoDoors.Characters

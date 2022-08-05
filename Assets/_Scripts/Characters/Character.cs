@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using TwoDoors.Characters.Movement;
-using TwoDoors.Data;
 using TwoDoors.Doors;
 using UnityEngine;
 
