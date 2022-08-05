@@ -577,7 +577,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 1
-  _game: {fileID: 1786452848}
   _charactersWhoPasses: 0100000003000000
 --- !u!114 &240834350
 MonoBehaviour:
@@ -1125,7 +1124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279bdc495eba5614e8ba70f6a82193d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _game: {fileID: 1786452848}
   _finishPanel: {fileID: 346537252}
   _gameOverPanel: {fileID: 1452599222}
 --- !u!1 &588929901
@@ -2012,7 +2010,6 @@ Transform:
   - {fileID: 1786452847}
   - {fileID: 1470179165}
   - {fileID: 1127427898}
-  - {fileID: 6173691182248315632}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7339,7 +7336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterFactory: {fileID: 1470179168}
-  _charactersInGame: 00000000010000000200000003000000
+  _charactersInGame: 0200000001000000
 --- !u!114 &1470179167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7365,7 +7362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6936d57671da8ff46be99a46cae3831e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _game: {fileID: 1786452848}
   _charactersPrefabs:
   - {fileID: 1750394476896901744, guid: 90f5b13b59a2e4544951671af4e307da, type: 3}
   - {fileID: 1750394476896901744, guid: 7f9761b559706134bba93c22eab1fdb4, type: 3}
@@ -7845,6 +7841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultReward: 1
   _defaultPunishment: 2
+  _pausePanel: {fileID: 797078559}
 --- !u!1 &1839086016
 GameObject:
   m_ObjectHideFlags: 0
@@ -8055,7 +8052,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 0
-  _game: {fileID: 1786452848}
   _charactersWhoPasses: 0000000002000000
 --- !u!61 &1916215052
 BoxCollider2D:
@@ -8441,7 +8437,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3716015374397014983}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: TryPause
         m_Mode: 1
@@ -8575,48 +8571,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3716015374397014983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108868552358425191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f78cbc97ba9204499f41ac4a2fdebd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pausePanel: {fileID: 797078559}
---- !u!4 &6173691182248315632
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108868552358425191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 991053684}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &9108868552358425191
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6173691182248315632}
-  - component: {fileID: 3716015374397014983}
-  m_Layer: 0
-  m_Name: Pause
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
