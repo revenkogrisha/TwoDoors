@@ -5,9 +5,9 @@ namespace TwoDoors.Characters.Movement
     [RequireComponent(typeof(Rigidbody2D))]
     public class ForwardMovement : MonoBehaviour, IMoveable
     {
-        [SerializeField] protected float _speed;
+        [SerializeField] protected float Speed;
 
-        protected Rigidbody2D _rigidbody2D;
+        private Rigidbody2D _rigidbody2D;
 
         #region MonoBehaviour
 
@@ -20,7 +20,7 @@ namespace TwoDoors.Characters.Movement
 
         public virtual void Move()
         {
-            _rigidbody2D.velocity = new Vector2(_speed, _rigidbody2D.velocity.y);
+            _rigidbody2D.velocity = new Vector2(Speed, _rigidbody2D.velocity.y);
         }
     }
 }

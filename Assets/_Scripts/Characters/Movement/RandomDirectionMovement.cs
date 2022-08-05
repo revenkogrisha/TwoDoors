@@ -45,7 +45,7 @@ namespace TwoDoors.Characters.Movement
         private void ChangeDirection()
         {
             _direction *= -1;
-            _speed *= _direction;
+            Speed *= _direction;
         }
     }
 }

@@ -10,12 +10,12 @@ namespace TwoDoors.Characters.Movement
         [SerializeField] private Vector2 _jumpForceRange;
 
         private Timer _timer;
+        private Rigidbody2D _rigidbody2D;
 
         #region MonoBehaviour
 
         private void Awake()
         {
-            base.Awake();
             _timer = GetComponent<Timer>();
         }
 
@@ -33,7 +33,9 @@ namespace TwoDoors.Characters.Movement
 
         private void TryJumpAndChangeDirection()
         {
-            switch (Random.Range(0, 2))
+            var random = Random.Range(0, 2);
+
+            switch (random)
             {
                 case 0:
                     JumpWithRandomForce();
