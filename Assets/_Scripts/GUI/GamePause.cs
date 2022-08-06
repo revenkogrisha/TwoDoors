@@ -18,9 +18,6 @@ namespace TwoDoors.Scene
 
         public void TryPause()
         {
-            if (!Input.GetKeyDown(KeyCode.Escape))
-                return;
-
             if (!_isOnPause)
             {
                 PauseGame();
@@ -31,18 +28,40 @@ namespace TwoDoors.Scene
             }
         }
 
+        public void StopTimeFlow()
+        {
+            Time.timeScale = 0f;
+        }
+
+        public void ContinueTimeFlow()
+        {
+            Time.timeScale = 1f;
+        }
+
         private void PauseGame()
         {
-            _pausePanel.SetActive(true);
-            _isOnPause = true;
+            StopTimeFlow();
+            ShowPausePanel();
             OnGamePaused?.Invoke();
         }
 
         private void ContinueGame()
         {
+            ContinueTimeFlow();
+            ClosePausePanel();
+            OnGameContinued?.Invoke();
+        }
+
+        private void ShowPausePanel()
+        {
+            _pausePanel.SetActive(true);
+            _isOnPause = true;
+        }
+
+        private void ClosePausePanel()
+        {
             _pausePanel.SetActive(false);
             _isOnPause = false;
-            OnGameContinued?.Invoke();
         }
     }
 }

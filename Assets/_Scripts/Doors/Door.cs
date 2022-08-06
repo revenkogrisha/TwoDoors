@@ -14,7 +14,6 @@ namespace TwoDoors.Doors
 
         private Character _characterEntered;
         private DoorAnimator _doorAnimator;
-        private Character _character;
 
         public bool IsCharacterEntered => _characterEntered != null;
 
@@ -27,13 +26,13 @@ namespace TwoDoors.Doors
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            _character = other.GetComponent<Character>();
+            var character = other.GetComponent<Character>();
 
-            if (_character == null)
+            if (character == null)
                 throw new Exception("Character is null!");
 
-            if (_character.IsTryingToPass)
-                TryPassCharacter();
+            if (character.IsTryingToPass)
+                TryPassCharacter(character);
         }
 
         #endregion
@@ -46,26 +45,27 @@ namespace TwoDoors.Doors
 
         public void RemoveEnteredCharacter() => _characterEntered = null;
 
-        private void TryPassCharacter()
+        private void TryPassCharacter(Character character)
         {
-            if (_charactersWhoPasses.Contains(_character.Id))
+            if (_charactersWhoPasses.Contains(character.Id))
             {
-                PassCharacter();
+                AddScore();
+                Destroy(character.gameObject);
+
                 return;
             }
 
             SubtractScore();
+            Destroy(character.gameObject);
         }
 
-        private void PassCharacter()
+        private void AddScore()
         {
-            Destroy(_character.gameObject);
             GameState.Instance.AddScore();
         }
 
         private void SubtractScore()
         {
-            Destroy(_character.gameObject);
             GameState.Instance.SubtractScore();
         }
     }

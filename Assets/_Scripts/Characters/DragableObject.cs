@@ -83,13 +83,11 @@ namespace TwoDoors.Characters
 
         private void DisableDrag()
         {
-            print(1);
             _collider2D.enabled = false;
         }
 
         private void EnableDrag()
         {
-            print(2);
             _collider2D.enabled = true;
         }
     }

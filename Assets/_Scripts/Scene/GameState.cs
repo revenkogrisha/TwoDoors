@@ -27,7 +27,7 @@ namespace TwoDoors.Scene
 
         private void Awake()
         {
-            Pause = new(_pausePanel);
+            Pause ??= new(_pausePanel);
 
             if (Instance == null)
                 Instance = this;
@@ -35,19 +35,13 @@ namespace TwoDoors.Scene
                 && Instance != this)
                 throw new Exception($"Singleton initialize exception in {gameObject.name}!");
 
-            ContinueGame();
+            Pause.ContinueTimeFlow();
         }
 
-        private void OnEnable()
+        private void Update()
         {
-            Pause.OnGamePaused += PauseGame;
-            Pause.OnGameContinued += ContinueGame;
-        }
-
-        private void OnDisable()
-        {
-            Pause.OnGamePaused -= PauseGame;
-            Pause.OnGameContinued -= ContinueGame;
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Pause.TryPause();
         }
 
         #endregion
@@ -80,7 +74,7 @@ namespace TwoDoors.Scene
 
         private void FinishLevel()
         {
-            PauseGame();
+            Pause.StopTimeFlow();
             OnGameFinished?.Invoke();
 
             var sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -89,18 +83,8 @@ namespace TwoDoors.Scene
 
         private void GameOver()
         {
-            PauseGame();
+            Pause.StopTimeFlow();
             OnGameOvered?.Invoke();
-        }
-
-        private void PauseGame()
-        {
-            Time.timeScale = 0f;
-        }
-
-        private void ContinueGame()
-        {
-            Time.timeScale = 1f;
         }
     }
 }
