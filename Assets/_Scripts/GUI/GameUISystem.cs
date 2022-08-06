@@ -2,7 +2,7 @@ using TwoDoors.Scene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace TwoDoors.UI
+namespace TwoDoors.GUI
 {
     public class GameUISystem : MonoBehaviour
     {
