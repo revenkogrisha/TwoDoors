@@ -1,13 +1,10 @@
 using System.Collections.Generic;
-using TwoDoors.Data;
-using TwoDoors.Scene;
 using UnityEngine;
 
 namespace TwoDoors.Characters
 {
     public class CommonCharacterFactory : CharacterFactory
     {
-        [SerializeField] private GameState _game;
         [SerializeField] private GameObject[] _charactersPrefabs;
 
         private Dictionary<CharactersId, GameObject> _characters;

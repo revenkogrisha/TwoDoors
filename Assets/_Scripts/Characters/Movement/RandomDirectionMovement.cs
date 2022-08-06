@@ -1,5 +1,5 @@
-using TwoDoors.Data;
 using UnityEngine;
+using TwoDoors.Scene;
 
 namespace TwoDoors.Characters.Movement
 {
@@ -9,7 +9,6 @@ namespace TwoDoors.Characters.Movement
         [SerializeField] private int _nonChangingDirectionTime = 2;
 
         protected Timer _timer;
-        private float _direction = 1;
 
         #region MonoBehaviour
 
@@ -44,8 +43,8 @@ namespace TwoDoors.Characters.Movement
 
         private void ChangeDirection()
         {
-            _direction *= -1;
-            _speed *= _direction;
+            var direction = (float)Direction * -1f;
+            Direction = (MovementDirection)direction;
         }
     }
 }

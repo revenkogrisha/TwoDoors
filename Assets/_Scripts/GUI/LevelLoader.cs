@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace TwoDoors.UI
+namespace TwoDoors.GUI
 {
     public class LevelLoader : MonoBehaviour
     {

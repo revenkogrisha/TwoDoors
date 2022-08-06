@@ -12,6 +12,7 @@ namespace TwoDoors.Scene
 
         [SerializeField] private int _defaultReward = 1;
         [SerializeField] private int _defaultPunishment = 2;
+        [SerializeField] private GameObject _pausePanel;
 
         private int _score = 0;
 
@@ -20,29 +21,27 @@ namespace TwoDoors.Scene
         public event Action OnCharacterPassed;
         public event Action OnPlayerMistaken;
 
+        public GamePause Pause { get; private set; }
+
         #region MonoBehaviour
 
         private void Awake()
         {
+            Pause ??= new(_pausePanel);
+
             if (Instance == null)
                 Instance = this;
             else if (Instance != null
                 && Instance != this)
                 throw new Exception($"Singleton initialize exception in {gameObject.name}!");
 
-            ContinueGame();
+            Pause.ContinueTimeFlow();
         }
 
-        private void OnEnable()
+        private void Update()
         {
-            Pause.Instance.OnGamePaused += PauseGame;
-            Pause.Instance.OnGameContinued += ContinueGame;
-        }
-
-        private void OnDisable()
-        {
-            Pause.Instance.OnGamePaused -= PauseGame;
-            Pause.Instance.OnGameContinued -= ContinueGame;
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Pause.TryPause();
         }
 
         #endregion
@@ -75,7 +74,7 @@ namespace TwoDoors.Scene
 
         private void FinishLevel()
         {
-            PauseGame();
+            Pause.StopTimeFlow();
             OnGameFinished?.Invoke();
 
             var sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -84,18 +83,8 @@ namespace TwoDoors.Scene
 
         private void GameOver()
         {
-            PauseGame();
+            Pause.StopTimeFlow();
             OnGameOvered?.Invoke();
-        }
-
-        private void PauseGame()
-        {
-            Time.timeScale = 0f;
-        }
-
-        private void ContinueGame()
-        {
-            Time.timeScale = 1f;
         }
     }
 }

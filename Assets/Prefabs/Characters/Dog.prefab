@@ -139,8 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f806b6855bf1af945af43951515b57aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _game: {fileID: 5775729341169752449, guid: b5331a0308b882841bf75200eaab01f3, type: 3}
-  _pause: {fileID: 552692893110857393, guid: ae2f01f6d883d1d469f56eb9d8c49e44, type: 3}
 --- !u!114 &5363539754581627647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,5 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51584f6d29195964b99f3af82b6d59f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: -6
+  Speed: 6
+  Direction: -1
   _nonChangingDirectionTime: 2

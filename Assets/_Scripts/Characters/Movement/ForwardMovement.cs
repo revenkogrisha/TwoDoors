@@ -5,22 +5,24 @@ namespace TwoDoors.Characters.Movement
     [RequireComponent(typeof(Rigidbody2D))]
     public class ForwardMovement : MonoBehaviour, IMoveable
     {
-        [SerializeField] protected float _speed;
+        [SerializeField, Range(0f, 10f)] protected float Speed;
+        [SerializeField] protected MovementDirection Direction;
+        protected Rigidbody2D Rigidbody2D;
 
-        protected Rigidbody2D _rigidbody2D;
 
         #region MonoBehaviour
 
         protected void Awake()
         {
-            _rigidbody2D = GetComponent<Rigidbody2D>();
+            Rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
         #endregion
 
         public virtual void Move()
         {
-            _rigidbody2D.velocity = new Vector2(_speed, _rigidbody2D.velocity.y);
+            Vector3 velocity = new(Speed * (float)Direction, Rigidbody2D.velocity.y);
+            Rigidbody2D.velocity = velocity;
         }
     }
 }

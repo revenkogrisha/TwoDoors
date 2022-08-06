@@ -1,5 +1,5 @@
-using TwoDoors.Data;
 using UnityEngine;
+using TwoDoors.Scene;
 
 namespace TwoDoors.Characters.Movement
 {
@@ -21,19 +21,21 @@ namespace TwoDoors.Characters.Movement
 
         private void OnEnable()
         {
-            _timer.OnCooldownPassed += TryJumpAndChangeDirection;
+            _timer.OnCooldownPassed += TryJump;
         }
 
         private void OnDisable()
         {
-            _timer.OnCooldownPassed -= TryJumpAndChangeDirection;
+            _timer.OnCooldownPassed -= TryJump;
         }
 
         #endregion
 
-        private void TryJumpAndChangeDirection()
+        private void TryJump()
         {
-            switch (Random.Range(0, 2))
+            var random = Random.Range(0, 2);
+
+            switch (random)
             {
                 case 0:
                     JumpWithRandomForce();
@@ -46,7 +48,7 @@ namespace TwoDoors.Characters.Movement
             var jumpForce = Random.Range(_jumpForceRange.x, _jumpForceRange.y);
             var force = new Vector2(0, jumpForce);
 
-            _rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+            Rigidbody2D.AddForce(force, ForceMode2D.Impulse);
         }
     }
 }
