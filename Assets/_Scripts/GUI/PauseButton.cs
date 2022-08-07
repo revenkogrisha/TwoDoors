@@ -1,22 +1,18 @@
 using TwoDoors.Scene;
+using Zenject;
 
 namespace TwoDoors.GUI
 {
     public class PauseButton : UIButton
     {
-        private GameState _game;
+        [Inject] private GameState _game;
 
         #region MonoBehaviour
-
-        private void Awake()
-        {
-            base.Awake();
-            _game = GameState.Instance;
-        }
 
         private void OnEnable()
         {
             base.OnEnable();
+
             _game.OnGameFinished += Disable;
             _game.OnGameOvered += Disable;
         }
@@ -24,6 +20,7 @@ namespace TwoDoors.GUI
         private void OnDisable()
         {
             base.OnDisable();
+
             _game.OnGameFinished -= Disable;
             _game.OnGameOvered -= Disable;
         }

@@ -1,5 +1,6 @@
 using TwoDoors.Scene;
 using UnityEngine;
+using Zenject;
 
 namespace TwoDoors.Characters
 {
@@ -8,6 +9,8 @@ namespace TwoDoors.Characters
     {
         [SerializeField] private CharacterFactory _characterFactory;
         [SerializeField] private CharactersId[] _charactersInGame;
+
+        [Inject] private DiContainer _container;
 
         private Timer _timer;
 
@@ -36,7 +39,7 @@ namespace TwoDoors.Characters
             var id = _charactersInGame[index];
             var characterObject = _characterFactory.GetCharacter(id);
 
-            Instantiate(characterObject);
+            _container.InstantiatePrefab(characterObject);
         }
     }
 }

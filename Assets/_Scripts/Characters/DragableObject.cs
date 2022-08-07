@@ -1,5 +1,6 @@
 using TwoDoors.Scene;
 using UnityEngine;
+using Zenject;
 
 namespace TwoDoors.Characters
 {
@@ -7,6 +8,8 @@ namespace TwoDoors.Characters
     [RequireComponent(typeof(Collider2D))]
     public class DragableObject : MonoBehaviour
     {
+        [Inject] private GameState _game;
+
         private bool _isOnDrag = false;
         private Transform _transform;
         private Rigidbody2D _rigidbody2D;
@@ -24,22 +27,20 @@ namespace TwoDoors.Characters
         }
         private void OnEnable()
         {
-            var gameState = GameState.Instance;
-            gameState.OnGameFinished += DisableDrag;
-            gameState.OnGameOvered += DisableDrag;
+            _game.OnGameFinished += DisableDrag;
+            _game.OnGameOvered += DisableDrag;
 
-            var pause = gameState.Pause;
+            var pause = _game.Pause;
             pause.OnGamePaused += DisableDrag;
             pause.OnGameContinued += EnableDrag;
         }
 
         private void OnDisable()
         {
-            var gameState = GameState.Instance;
-            gameState.OnGameFinished -= DisableDrag;
-            gameState.OnGameOvered -= DisableDrag;
+            _game.OnGameFinished -= DisableDrag;
+            _game.OnGameOvered -= DisableDrag;
 
-            var pause = gameState.Pause;
+            var pause = _game.Pause;
             pause.OnGamePaused -= DisableDrag;
             pause.OnGameContinued -= EnableDrag;
         }

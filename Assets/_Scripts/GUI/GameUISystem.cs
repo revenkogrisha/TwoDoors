@@ -1,6 +1,7 @@
 using TwoDoors.Scene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace TwoDoors.GUI
 {
@@ -11,18 +12,20 @@ namespace TwoDoors.GUI
         [SerializeField] private GameObject _finishPanel;
         [SerializeField] private GameObject _gameOverPanel;
 
+        [Inject] private GameState _game;
+
         #region MonoBehaviour
 
         private void OnEnable()
         {
-            GameState.Instance.OnGameFinished += OpenFinishPanel;
-            GameState.Instance.OnGameOvered += OpenGameOverPanel;
+            _game.OnGameFinished += OpenFinishPanel;
+            _game.OnGameOvered += OpenGameOverPanel;
         }
 
         private void OnDisable()
         {
-            GameState.Instance.OnGameFinished -= OpenFinishPanel;
-            GameState.Instance.OnGameOvered -= OpenGameOverPanel;
+            _game.OnGameFinished -= OpenFinishPanel;
+            _game.OnGameOvered -= OpenGameOverPanel;
         }
 
         #endregion

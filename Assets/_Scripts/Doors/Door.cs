@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TwoDoors.Characters;
 using TwoDoors.Scene;
 using UnityEngine;
+using Zenject;
 
 namespace TwoDoors.Doors
 {
@@ -11,6 +12,8 @@ namespace TwoDoors.Doors
     {
         [SerializeField] private DoorsId _id;
         [SerializeField] private List<CharactersId> _charactersWhoPasses;
+
+        [Inject] private GameState _game;
 
         private Character _characterEntered;
         private DoorAnimator _doorAnimator;
@@ -61,12 +64,12 @@ namespace TwoDoors.Doors
 
         private void AddScore()
         {
-            GameState.Instance.AddScore();
+            _game.AddScore();
         }
 
         private void SubtractScore()
         {
-            GameState.Instance.SubtractScore();
+            _game.SubtractScore();
         }
     }
 }
