@@ -6,9 +6,9 @@ namespace TwoDoors.GUI
     [RequireComponent(typeof(Button))]
     public abstract class UIButton : MonoBehaviour
     {
-        #region MonoBehaviour
-
         private Button _button;
+    
+        #region MonoBehaviour
 
         protected void Awake()
         {
