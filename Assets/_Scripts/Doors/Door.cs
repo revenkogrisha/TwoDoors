@@ -16,16 +16,13 @@ namespace TwoDoors.Doors
         [Inject] private GameState _game;
 
         private Character _characterEntered;
-        private DoorAnimator _doorAnimator;
+
+        public event Action OnDoorOpened;
+        public event Action OnDoorClosed;
 
         public bool IsCharacterEntered => _characterEntered != null;
 
         #region MonoBehaviour
-
-        private void Awake()
-        {
-            _doorAnimator = GetComponent<DoorAnimator>();
-        }
 
         private void OnTriggerStay2D(Collider2D other)
         {
@@ -40,9 +37,9 @@ namespace TwoDoors.Doors
 
         #endregion
 
-        public void Open() => _doorAnimator.Open();
+        public void Open() => OnDoorOpened?.Invoke();
 
-        public void Close() => _doorAnimator.Close();
+        public void Close() => OnDoorClosed?.Invoke();
 
         public void SetEnteredCharacter(Character character) => _characterEntered = character;
 
