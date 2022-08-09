@@ -47,7 +47,7 @@ namespace TwoDoors.Doors
             if (!_animator.enabled)
                 _animator.enabled = true;
 
-            _animator.SetBool(Opened, false);
+            _animator.SetBool(_openedId, false);
         }
     }
 }
