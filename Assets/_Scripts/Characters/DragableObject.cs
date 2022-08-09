@@ -66,10 +66,10 @@ namespace TwoDoors.Characters
             var cameraZ = Camera.main.transform.position.z;
             var pointPosition = new Vector3( mousePosition.x, mousePosition.y, cameraZ);
 
-            var _touchPoint = Camera.main.ScreenToWorldPoint(pointPosition);
-            _touchPoint.z = 0;
+            var touchPoint = Camera.main.ScreenToWorldPoint(pointPosition);
+            touchPoint.z = 0;
 
-            _transform.position = _touchPoint;
+            _transform.position = touchPoint;
         }
 
         private void DisableMovement()
