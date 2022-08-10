@@ -10,12 +10,14 @@ namespace TwoDoors.Doors
         [SerializeField] private Animator _animator;
 
         private Door _door;
+        private int _openedId;
 
         #region MonoBehaviour
 
         private void Awake()
         {
             _door = GetComponent<Door>();
+            _openedId = Animator.StringToHash(Opened);
         }
 
         private void OnEnable()
@@ -37,7 +39,7 @@ namespace TwoDoors.Doors
             if (!_animator.enabled)
                 _animator.enabled = true;
 
-            _animator.SetBool(Opened, true);
+            _animator.SetBool(_openedId, true);
         }
 
         public void Close()
@@ -45,7 +47,7 @@ namespace TwoDoors.Doors
             if (!_animator.enabled)
                 _animator.enabled = true;
 
-            _animator.SetBool(Opened, false);
+            _animator.SetBool(_openedId, false);
         }
     }
 }
