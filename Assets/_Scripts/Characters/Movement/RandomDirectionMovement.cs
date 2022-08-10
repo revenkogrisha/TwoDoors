@@ -8,6 +8,7 @@ namespace TwoDoors.Characters.Movement
     {
         [SerializeField] private int _nonChangingDirectionTime = 2;
 
+        private Transform _transform;
         protected Timer _timer;
 
         #region MonoBehaviour
@@ -15,6 +16,7 @@ namespace TwoDoors.Characters.Movement
         private void Awake()
         {
             base.Awake();
+            _transform = transform;
             _timer = GetComponent<Timer>();
         }
 
@@ -45,6 +47,14 @@ namespace TwoDoors.Characters.Movement
         {
             var direction = (float)Direction * -1f;
             Direction = (MovementDirection)direction;
+            ReflectTransform();
+        }
+
+        private void ReflectTransform()
+        {
+            var newScale = new Vector2(
+                            _transform.localScale.x * -1f, _transform.localScale.y);
+            _transform.localScale = newScale;
         }
     }
 }
