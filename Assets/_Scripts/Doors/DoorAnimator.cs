@@ -29,18 +29,20 @@ namespace TwoDoors.Doors
 
         public void Open()
         {
-            if (!_animator.enabled)
-                _animator.enabled = true;
-
+            EnableAnimatorIfDisabled();
             _animator.SetBool(_openedId, true);
         }
 
         public void Close()
         {
+            EnableAnimatorIfDisabled();
+            _animator.SetBool(_openedId, false);
+        }
+
+        private void EnableAnimatorIfDisabled()
+        {
             if (!_animator.enabled)
                 _animator.enabled = true;
-
-            _animator.SetBool(_openedId, false);
         }
     }
 }
