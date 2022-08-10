@@ -41,8 +41,10 @@ namespace TwoDoors.Doors
 
         private void EnableAnimatorIfDisabled()
         {
-            if (!_animator.enabled)
-                _animator.enabled = true;
+            if (_animator.enabled)
+                return;
+
+            _animator.enabled = true;
         }
     }
 }
