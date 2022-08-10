@@ -309,7 +309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24528050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.5, z: 0}
+  m_LocalPosition: {x: 0, y: -5.5, z: -5.35}
   m_LocalScale: {x: 11, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8802,7 +8802,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1916215050}
   - component: {fileID: 1916215052}
-  - component: {fileID: 1916215053}
   - component: {fileID: 1916215051}
   m_Layer: 0
   m_Name: Door_1
@@ -8840,6 +8839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9340cf554cbd06a418793d8ac92bb928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 2084622662}
   _id: 0
   _charactersWhoPasses: 0000000002000000
 --- !u!61 &1916215052
@@ -8868,19 +8868,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 5}
   m_EdgeRadius: 0
---- !u!114 &1916215053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916215048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9e8ceb03dd5b854fba8a28995bdee7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 2084622662}
 --- !u!1 &1939239521
 GameObject:
   m_ObjectHideFlags: 0
@@ -9214,7 +9201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2084355213}
   - component: {fileID: 2084355216}
-  - component: {fileID: 2084355215}
   - component: {fileID: 2084355214}
   m_Layer: 0
   m_Name: Door_2
@@ -9252,21 +9238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9340cf554cbd06a418793d8ac92bb928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 540766370}
   _id: 1
   _charactersWhoPasses: 0100000003000000
---- !u!114 &2084355215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084355212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9e8ceb03dd5b854fba8a28995bdee7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 540766370}
 --- !u!61 &2084355216
 BoxCollider2D:
   m_ObjectHideFlags: 0
