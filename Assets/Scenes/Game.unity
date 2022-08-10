@@ -8032,7 +8032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1470179165
 Transform:
   m_ObjectHideFlags: 0
@@ -8061,7 +8061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterFactory: {fileID: 1470179168}
-  _charactersInGame: 00000000010000000200000003000000
+  _charactersInGame: 00000000
 --- !u!114 &1470179167
 MonoBehaviour:
   m_ObjectHideFlags: 0
