@@ -10,7 +10,10 @@ namespace TwoDoors.Installers
 
         public override void InstallBindings()
         {
-            Container.Bind<Score>().FromInstance(_score).AsSingle().NonLazy();
+            Container.Bind<Score>()
+                .FromInstance(_score)
+                .AsSingle()
+                .NonLazy();
         }
     }
 }
