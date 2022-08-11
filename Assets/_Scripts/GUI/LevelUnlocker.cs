@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[DisallowMultipleComponent]
 public class LevelUnlocker : MonoBehaviour
 {
     private const string LastFinishedLevel = nameof(LastFinishedLevel);

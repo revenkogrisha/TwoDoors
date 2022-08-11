@@ -5,6 +5,7 @@ namespace TwoDoors.Characters.Movement
 {
     [RequireComponent(typeof(Timer))]
     [RequireComponent(typeof(Rigidbody2D))]
+    [DisallowMultipleComponent]
     public class RandomJumpMovement : ForwardMovement
     {
         [SerializeField] private Vector2 _jumpForceRange;

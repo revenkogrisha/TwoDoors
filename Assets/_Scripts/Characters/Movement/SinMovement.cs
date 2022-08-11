@@ -3,6 +3,7 @@ using UnityEngine;
 namespace TwoDoors.Characters.Movement
 {
     [RequireComponent(typeof(Rigidbody2D))]
+    [DisallowMultipleComponent]
     public class SinMovement : MonoBehaviour, IMoveable
     {
         [SerializeField] private float _speed;

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace TwoDoors.Scene
 {
+    [DisallowMultipleComponent]
     public class Score : MonoBehaviour
     {
         [SerializeField] private int _defaultReward = 1;

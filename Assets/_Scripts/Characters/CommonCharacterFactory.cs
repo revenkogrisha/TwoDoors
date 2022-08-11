@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace TwoDoors.Characters
 {
+    [DisallowMultipleComponent]
     public class CommonCharacterFactory : CharacterFactory
     {
         [SerializeField] private GameObject[] _charactersPrefabs;

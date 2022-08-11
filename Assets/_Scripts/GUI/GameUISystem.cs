@@ -5,6 +5,7 @@ using Zenject;
 
 namespace TwoDoors.GUI
 {
+    [DisallowMultipleComponent]
     public class GameUISystem : MonoBehaviour
     {
         private const int _menuSceneId = 0;

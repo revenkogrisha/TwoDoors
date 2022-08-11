@@ -3,6 +3,7 @@ using Zenject;
 
 namespace TwoDoors.Scene
 {
+    [DisallowMultipleComponent]
     public class LevelBound : MonoBehaviour
     {
         [Inject] private Score _score;

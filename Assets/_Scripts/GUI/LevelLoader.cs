@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace TwoDoors.GUI
 {
+    [DisallowMultipleComponent]
     public class LevelLoader : MonoBehaviour
     {
         [SerializeField] private GameObject _menu;

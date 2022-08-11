@@ -4,6 +4,7 @@ using TwoDoors.Scene;
 namespace TwoDoors.Characters.Movement
 {
     [RequireComponent(typeof(Timer))]
+    [DisallowMultipleComponent]
     public class RandomDirectionMovement : ForwardMovement
     {
         [SerializeField] private int _nonChangingDirectionTime = 2;

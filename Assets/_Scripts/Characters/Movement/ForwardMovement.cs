@@ -3,6 +3,7 @@ using UnityEngine;
 namespace TwoDoors.Characters.Movement
 {
     [RequireComponent(typeof(Rigidbody2D))]
+    [DisallowMultipleComponent]
     public class ForwardMovement : MonoBehaviour, IMoveable
     {
         [SerializeField, Range(0f, 10f)] protected float Speed;

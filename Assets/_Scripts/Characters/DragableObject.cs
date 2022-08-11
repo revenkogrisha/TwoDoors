@@ -6,6 +6,7 @@ namespace TwoDoors.Characters
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
+    [DisallowMultipleComponent]
     public class DragableObject : MonoBehaviour
     {
         [SerializeField] private Animator _animator;

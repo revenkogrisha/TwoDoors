@@ -5,6 +5,7 @@ using Zenject;
 
 namespace TwoDoors.Scene
 {
+    [DisallowMultipleComponent]
     public class GameState : MonoBehaviour
     {
         private const string LastFinishedLevel = nameof(LastFinishedLevel);

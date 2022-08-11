@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace TwoDoors.Doors
 {
+    [DisallowMultipleComponent]
     public class DoorAnimator
     {
         private const string Opened = nameof(Opened);
