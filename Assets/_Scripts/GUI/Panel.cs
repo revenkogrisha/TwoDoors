@@ -2,7 +2,7 @@
 
 namespace TwoDoors.GUI
 {
-    public class PausePanel : MonoBehaviour
+    public class Panel : MonoBehaviour
     {
         private const string Opened = nameof(Opened);
 

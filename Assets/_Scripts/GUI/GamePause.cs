@@ -6,7 +6,7 @@ namespace TwoDoors.Scene
 {
     public class GamePause : MonoBehaviour
     {
-        [SerializeField] private PausePanel _pausePanel;
+        [SerializeField] private Panel _pausePanel;
 
         private bool _isOnPause = false;
 
