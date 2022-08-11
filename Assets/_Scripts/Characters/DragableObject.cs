@@ -9,6 +9,7 @@ namespace TwoDoors.Characters
     public class DragableObject : MonoBehaviour
     {
         [Inject] private GameState _game;
+        [Inject] private Score _score;
 
         private bool _isOnDrag = false;
         private Transform _transform;
@@ -27,8 +28,8 @@ namespace TwoDoors.Characters
         }
         private void OnEnable()
         {
-            _game.OnGameFinished += DisableDrag;
-            _game.OnGameOvered += DisableDrag;
+            _score.OnGameFinished += DisableDrag;
+            _score.OnGameOvered += DisableDrag;
 
             var pause = _game.Pause;
             pause.OnGamePaused += DisableDrag;
@@ -37,8 +38,8 @@ namespace TwoDoors.Characters
 
         private void OnDisable()
         {
-            _game.OnGameFinished -= DisableDrag;
-            _game.OnGameOvered -= DisableDrag;
+            _score.OnGameFinished -= DisableDrag;
+            _score.OnGameOvered -= DisableDrag;
 
             var pause = _game.Pause;
             pause.OnGamePaused -= DisableDrag;

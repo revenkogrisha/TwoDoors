@@ -1,14 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace TwoDoors.Scene
 {
     public class Effects : MonoBehaviour
     {
-        [SerializeField] private GameState _game;
         [SerializeField] private float _shakeDuration = 1f;
         [SerializeField] private float _shakeForce = 0.9f;
         [SerializeField] private ParticleSystem _firework;
+
+        [Inject] private Score _score;
 
         private readonly float _zoomWhileShaking = 0.9f;
 
@@ -36,14 +38,14 @@ namespace TwoDoors.Scene
 
         private void OnEnable()
         {
-            _game.OnCharacterPassed += RaiseParticles;
-            _game.OnPlayerMistaken += RaiseShake;
+            _score.OnCharacterPassed += RaiseParticles;
+            _score.OnPlayerMistaken += RaiseShake;
         }
 
         private void OnDisable()
         {
-            _game.OnCharacterPassed -= RaiseParticles;
-            _game.OnPlayerMistaken -= RaiseShake;
+            _score.OnCharacterPassed -= RaiseParticles;
+            _score.OnPlayerMistaken -= RaiseShake;
         }
 
         private void Awake()

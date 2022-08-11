@@ -13,7 +13,7 @@ namespace TwoDoors.Doors
         [SerializeField] private DoorsId _id;
         [SerializeField] private List<CharactersId> _charactersWhoPasses;
 
-        [Inject] private GameState _game;
+        [Inject] private Score _score;
 
         private DoorAnimator _doorAnimator;
         private Character _characterEntered;
@@ -72,12 +72,12 @@ namespace TwoDoors.Doors
 
         private void AddScore()
         {
-            _game.AddScore();
+            _score.AddScore();
         }
 
         private void SubtractScore()
         {
-            _game.SubtractScore();
+            _score.SubtractScore();
         }
     }
 }
