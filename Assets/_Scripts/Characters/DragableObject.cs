@@ -12,6 +12,7 @@ namespace TwoDoors.Characters
         [SerializeField] private Animator _animator;
 
         [Inject] private GameState _game;
+        [Inject] private GamePause _pause;
         [Inject] private Score _score;
 
         private bool _isOnDrag = false;
@@ -34,21 +35,27 @@ namespace TwoDoors.Characters
         private void OnEnable()
         {
             _score.OnGameFinished += DisableDrag;
+            _score.OnGameFinished += DisableMovement;
             _score.OnGameOvered += DisableDrag;
+            _score.OnGameOvered += DisableMovement;
 
-            var pause = _game.Pause;
-            pause.OnGamePaused += DisableDrag;
-            pause.OnGameContinued += EnableDrag;
+            _pause.OnGamePaused += DisableDrag;
+            _pause.OnGamePaused += DisableMovement;
+            _pause.OnGameContinued += EnableMovement;
+            _pause.OnGameContinued += EnableDrag;
         }
 
         private void OnDisable()
         {
+            _score.OnGameFinished -= DisableMovement;
             _score.OnGameFinished -= DisableDrag;
             _score.OnGameOvered -= DisableDrag;
+            _score.OnGameOvered -= DisableMovement;
 
-            var pause = _game.Pause;
-            pause.OnGamePaused -= DisableDrag;
-            pause.OnGameContinued -= EnableDrag;
+            _pause.OnGamePaused -= DisableDrag;
+            _pause.OnGamePaused -= DisableMovement;
+            _pause.OnGameContinued -= EnableMovement;
+            _pause.OnGameContinued -= EnableDrag;
         }
 
         private void OnMouseDrag()

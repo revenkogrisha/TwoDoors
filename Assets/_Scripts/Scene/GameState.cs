@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -13,15 +12,12 @@ namespace TwoDoors.Scene
         [SerializeField] private GameObject _pausePanel;
 
         [Inject] private Score _score;
-
-        public GamePause Pause { get; private set; }
+        [Inject] private GamePause Pause;
 
         #region MonoBehaviour
 
         private void Awake()
         {
-            Pause ??= new(_pausePanel);
-
             Pause.ContinueTimeFlow();
         }
 
@@ -47,7 +43,7 @@ namespace TwoDoors.Scene
 
         private void FinishLevel()
         {
-            Pause.StopTimeFlow();
+            Pause.StopTimeFlowWithDelay(Pause.PopupDelaySeconds);
 
             var sceneIndex = SceneManager.GetActiveScene().buildIndex;
             PlayerPrefs.SetInt(LastFinishedLevel, sceneIndex);
@@ -55,7 +51,7 @@ namespace TwoDoors.Scene
 
         private void GameOver()
         {
-            Pause.StopTimeFlow();
+            Pause.StopTimeFlowWithDelay(Pause.PopupDelaySeconds);
         }
     }
 }

@@ -1,20 +1,19 @@
 using System;
+using TwoDoors.GUI;
 using UnityEngine;
 
 namespace TwoDoors.Scene
 {
-    public class GamePause
+    public class GamePause : MonoBehaviour
     {
-        private readonly GameObject _pausePanel;
+        [SerializeField] private PausePanel _pausePanel;
+
         private bool _isOnPause = false;
 
         public event Action OnGamePaused;
         public event Action OnGameContinued;
 
-        public GamePause(GameObject pausePanel)
-        {
-            _pausePanel = pausePanel;
-        }
+        public float PopupDelaySeconds = 0.6f;
 
         public void TryPause()
         {
@@ -26,6 +25,11 @@ namespace TwoDoors.Scene
             {
                 ContinueGame();
             }
+        }
+
+        public void StopTimeFlowWithDelay(float delay)
+        {
+            Invoke(nameof(StopTimeFlow), delay);
         }
 
         public void StopTimeFlow()
@@ -40,28 +44,20 @@ namespace TwoDoors.Scene
 
         private void PauseGame()
         {
-            StopTimeFlow();
-            ShowPausePanel();
+            StopTimeFlowWithDelay(PopupDelaySeconds);
+            _pausePanel.Show();
+            _isOnPause = true;
+
             OnGamePaused?.Invoke();
         }
 
         private void ContinueGame()
         {
             ContinueTimeFlow();
-            ClosePausePanel();
-            OnGameContinued?.Invoke();
-        }
-
-        private void ShowPausePanel()
-        {
-            _pausePanel.SetActive(true);
-            _isOnPause = true;
-        }
-
-        private void ClosePausePanel()
-        {
-            _pausePanel.SetActive(false);
+            _pausePanel.Close();
             _isOnPause = false;
+
+            OnGameContinued?.Invoke();
         }
     }
 }

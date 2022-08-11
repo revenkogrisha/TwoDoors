@@ -9,13 +9,21 @@ namespace TwoDoors.GUI
     public class GameUISystem : MonoBehaviour
     {
         private const int _menuSceneId = 0;
+        private const string Opened = nameof(Opened);
 
         [SerializeField] private GameObject _finishPanel;
         [SerializeField] private GameObject _gameOverPanel;
 
         [Inject] private Score _score;
 
+        private int _openedId;
+
         #region MonoBehaviour
+
+        private void Awake()
+        {
+            _openedId = Animator.StringToHash(Opened);
+        }
 
         private void OnEnable()
         {
@@ -34,11 +42,13 @@ namespace TwoDoors.GUI
         public void OpenFinishPanel()
         {
             _finishPanel.SetActive(true);
+            _finishPanel.GetComponent<Animator>().SetTrigger(_openedId);
         }
 
         public void OpenGameOverPanel()
         {
             _gameOverPanel.SetActive(true);
+            _finishPanel.GetComponent<Animator>().SetTrigger(_openedId);
         }
 
         public void BackToMenu()
