@@ -1,3 +1,4 @@
+using System;
 using TwoDoors.Scene;
 using UnityEngine;
 using Zenject;
@@ -10,8 +11,9 @@ namespace TwoDoors.Characters
     public class DragableObject : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
+        [SerializeField] private AudioSource _dragSound;
+        [SerializeField] private AudioSource _mouseUpSound;
 
-        [Inject] private GameState _game;
         [Inject] private GamePause _pause;
         [Inject] private Score _score;
 
@@ -19,7 +21,12 @@ namespace TwoDoors.Characters
         private Transform _transform;
         private Rigidbody2D _rigidbody2D;
         private Collider2D _collider2D;
+
         private CharacterAnimator _characterAnimator;
+        private CharacterAudio _audio;
+
+        public event Action OnDragStarted;
+        public event Action OnDragStopped;
 
         public bool IsOnDrag => _isOnDrag;
 
@@ -27,10 +34,12 @@ namespace TwoDoors.Characters
 
         private void Awake()
         {
+            _characterAnimator = new(this, _animator);
+            _audio = new(this, _dragSound, _mouseUpSound);
+
             _transform = transform;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
-            _characterAnimator = new(_animator);
         }
         private void OnEnable()
         {
@@ -47,6 +56,9 @@ namespace TwoDoors.Characters
 
         private void OnDisable()
         {
+            _audio.Disable();
+            _characterAnimator.Disable();
+
             _score.OnGameFinished -= DisableMovement;
             _score.OnGameFinished -= DisableDrag;
             _score.OnGameOvered -= DisableDrag;
@@ -60,15 +72,19 @@ namespace TwoDoors.Characters
 
         private void OnMouseDrag()
         {
+            if (!_isOnDrag)
+                OnDragStarted?.Invoke();
+
             SetTransformToTouchPoint();
             DisableMovement();
-            SetAsOnDrag();
+            _isOnDrag = true;
         }
 
         private void OnMouseUp()
         {
+            OnDragStopped?.Invoke();
             EnableMovement();
-            SetAsNotOnDrag();
+            _isOnDrag = false;
         }
 
         #endregion
@@ -93,18 +109,6 @@ namespace TwoDoors.Characters
         private void EnableMovement()
         {
             _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-        }
-
-        public void SetAsOnDrag()
-        {
-            _characterAnimator.SetAsOnDrag();
-            _isOnDrag = true;
-        }
-
-        public void SetAsNotOnDrag()
-        {
-            _characterAnimator.SetAsNotOnDrag();
-            _isOnDrag = false;
         }
 
         private void DisableDrag()

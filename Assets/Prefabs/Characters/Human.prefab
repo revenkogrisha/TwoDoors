@@ -272,6 +272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1858958882740569222}
+  _dragSound: {fileID: 4214350839828431744, guid: ffe9f77eaaeb97540bde1a4156d3676d, type: 3}
+  _mouseUpSound: {fileID: 4214350839828431744, guid: 882460b540738cb48bcf1e484e86e681, type: 3}
 --- !u!114 &1750394476896901751
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -88,6 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4381686206940621144}
+  _dragSound: {fileID: -2100982563654007215, guid: 2fff65cad4413414794a55378c4c3d8b, type: 3}
+  _mouseUpSound: {fileID: -2100982563654007215, guid: 4e5e71996627a184f9a5988023b13c9b, type: 3}
 --- !u!114 &5363539754581627647
 MonoBehaviour:
   m_ObjectHideFlags: 0
