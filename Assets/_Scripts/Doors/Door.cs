@@ -7,6 +7,7 @@ using Zenject;
 
 namespace TwoDoors.Doors
 {
+    [DisallowMultipleComponent]
     public class Door : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
@@ -16,12 +17,11 @@ namespace TwoDoors.Doors
         [Inject] private Score _score;
 
         private DoorAnimator _doorAnimator;
-        private Character _characterEntered;
 
         public event Action OnDoorOpened;
         public event Action OnDoorClosed;
 
-        public bool IsCharacterEntered => _characterEntered != null;
+        public bool IsCharacterEntered { get; private set; } = false;
 
         #region MonoBehaviour
 
@@ -37,27 +37,28 @@ namespace TwoDoors.Doors
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            var character = other.GetComponent<Character>();
-
-            if (character == null)
-                throw new Exception("Character is null!");
-
-            if (character.IsTryingToPass)
-                TryPassCharacter(character);
+            Router.Route<Character>(TryPassCharacter, other);
         }
 
         #endregion
 
-        public void Open() => OnDoorOpened?.Invoke();
+        public void Enter(Character character)
+        {
+            IsCharacterEntered = true;
+            OnDoorOpened?.Invoke();
+        }
 
-        public void Close() => OnDoorClosed?.Invoke();
-
-        public void SetEnteredCharacter(Character character) => _characterEntered = character;
-
-        public void RemoveEnteredCharacter() => _characterEntered = null;
+        public void Exit()
+        {
+            IsCharacterEntered = false;
+            OnDoorClosed?.Invoke();
+        }
 
         private void TryPassCharacter(Character character)
         {
+            if (!character.IsTryingToPass)
+                return;
+
             if (_charactersWhoPasses.Contains(character.Id))
             {
                 AddScore();

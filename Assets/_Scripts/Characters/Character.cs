@@ -8,6 +8,7 @@ namespace TwoDoors.Characters
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(DragableObject))]
+    [DisallowMultipleComponent]
     public class Character : MonoBehaviour
     {
         [SerializeField] private CharactersId _id;
@@ -45,27 +46,12 @@ namespace TwoDoors.Characters
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var other = collision.gameObject;
-            _doorEntered = other.GetComponent<Door>();
-
-            if (_doorEntered == null)
-                return;
-
-            if (_doorEntered.IsCharacterEntered
-                || !_dragable.IsOnDrag)
-            {
-                _doorEntered = null;
-                return;
-            }
-
-            _doorEntered.SetEnteredCharacter(this);
-            _doorEntered.Open();
+            Router.Route<Door>(TryEnterTheDoor, collision);
         }
 
         private void OnTriggerExit2D()
         {
-            _doorEntered?.Close();
-            _doorEntered?.RemoveEnteredCharacter();
+            _doorEntered?.Exit();
         }
 
         #endregion
@@ -82,6 +68,16 @@ namespace TwoDoors.Characters
             yield return new WaitForSeconds(.1f);
 
             _isTryingToPass = false;
+        }
+
+        private void TryEnterTheDoor(Door door)
+        {
+            if (door.IsCharacterEntered
+                || !_dragable.IsOnDrag)
+                return;
+
+            _doorEntered = door;
+            _doorEntered.Enter(this);
         }
     }
 }
