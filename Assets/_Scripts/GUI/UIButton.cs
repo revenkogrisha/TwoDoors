@@ -4,6 +4,7 @@ using UnityEngine.UI;
 namespace TwoDoors.GUI
 {
     [RequireComponent(typeof(Button))]
+    [DisallowMultipleComponent]
     public abstract class UIButton : MonoBehaviour
     {
         private Button _button;

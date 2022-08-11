@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class LevelUnlocker : MonoBehaviour
+public class LevelButtonUnlocker : MonoBehaviour
 {
     private const string LastFinishedLevel = nameof(LastFinishedLevel);
 
@@ -10,7 +10,7 @@ public class LevelUnlocker : MonoBehaviour
 
     #region MonoBehaviour
 
-    private void Start()
+    private void Awake()
     {
         var lastFinishedLevelIndex = PlayerPrefs.GetInt(LastFinishedLevel, 0);
 
@@ -20,7 +20,7 @@ public class LevelUnlocker : MonoBehaviour
 
             if (i > lastFinishedLevelIndex
                 ||  i + 1 >= _allButtons.Length)
-                continue;
+                break;
 
             _allButtons[i + 1].interactable = true;
         }

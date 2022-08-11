@@ -10,6 +10,7 @@ namespace TwoDoors.GUI
     public class LevelLoader : MonoBehaviour
     {
         [SerializeField] private GameObject _menu;
+        [SerializeField] private GameObject _levels;
         [SerializeField] private GameObject _loadingScreen;
         [SerializeField] private Slider _loadingBar;
         [SerializeField] private TMP_Text _loadingText;
@@ -19,6 +20,7 @@ namespace TwoDoors.GUI
         public void StartLoading(int index)
         {
             _menu.SetActive(false);
+            _levels.SetActive(false);
             _loadingScreen.SetActive(true);
 
 

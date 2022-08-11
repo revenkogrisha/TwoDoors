@@ -7,18 +7,21 @@ namespace TwoDoors.Scene
     [DisallowMultipleComponent]
     public class GameState : MonoBehaviour
     {
-        private const string LastFinishedLevel = nameof(LastFinishedLevel);
-
         [SerializeField] private GameObject _pausePanel;
+        [SerializeField, Min(1)] private int _levelId;
 
         [Inject] private Score _score;
-        [Inject] private GamePause Pause;
+        [Inject] private GamePause _pause;
+
+        private LevelData _levelData;
 
         #region MonoBehaviour
 
         private void Awake()
         {
-            Pause.ContinueTimeFlow();
+            _levelData = new(_levelId);
+
+            _pause.ContinueTimeFlow();
         }
 
         private void OnEnable()
@@ -36,22 +39,20 @@ namespace TwoDoors.Scene
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                Pause.TryPause();
+                _pause.TryPause();
         }
 
         #endregion
 
         private void FinishLevel()
         {
-            Pause.StopTimeFlowWithDelay(Pause.PopupDelaySeconds);
-
-            var sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            PlayerPrefs.SetInt(LastFinishedLevel, sceneIndex);
+            _pause.StopTimeFlowWithDelay(_pause.PopupDelaySeconds);
+            _levelData.SaveLevel();
         }
 
         private void GameOver()
         {
-            Pause.StopTimeFlowWithDelay(Pause.PopupDelaySeconds);
+            _pause.StopTimeFlowWithDelay(_pause.PopupDelaySeconds);
         }
     }
 }
