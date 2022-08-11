@@ -8108,7 +8108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterFactory: {fileID: 1470179168}
-  _charactersInGame: 00000000010000000300000000000000
+  _charactersInGame: 00000000010000000300000002000000
 --- !u!114 &1470179167
 MonoBehaviour:
   m_ObjectHideFlags: 0
