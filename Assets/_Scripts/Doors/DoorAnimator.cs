@@ -2,52 +2,49 @@ using UnityEngine;
 
 namespace TwoDoors.Doors
 {
-    [RequireComponent(typeof(Door))]
-    public class DoorAnimator : MonoBehaviour
+    public class DoorAnimator
     {
         private const string Opened = nameof(Opened);
-
-        [SerializeField] private Animator _animator;
-
+    
         private Door _door;
+        private Animator _animator;
         private int _openedId;
 
-        #region MonoBehaviour
-
-        private void Awake()
+        public DoorAnimator(Door door, Animator animator)
         {
-            _door = GetComponent<Door>();
+            _door = door;
+            _animator = animator;
+
             _openedId = Animator.StringToHash(Opened);
-        }
 
-        private void OnEnable()
-        {
             _door.OnDoorOpened += Open;
             _door.OnDoorClosed += Close;
         }
 
-        private void OnDisable()
+        public void Disable()
         {
             _door.OnDoorOpened -= Open;
             _door.OnDoorClosed -= Close;
         }
 
-        #endregion
-
         public void Open()
         {
-            if (!_animator.enabled)
-                _animator.enabled = true;
-
+            EnableAnimatorIfDisabled();
             _animator.SetBool(_openedId, true);
         }
 
         public void Close()
         {
-            if (!_animator.enabled)
-                _animator.enabled = true;
-
+            EnableAnimatorIfDisabled();
             _animator.SetBool(_openedId, false);
+        }
+
+        private void EnableAnimatorIfDisabled()
+        {
+            if (_animator.enabled)
+                return;
+
+            _animator.enabled = true;
         }
     }
 }

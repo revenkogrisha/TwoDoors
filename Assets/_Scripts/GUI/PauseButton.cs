@@ -6,6 +6,7 @@ namespace TwoDoors.GUI
     public class PauseButton : UIButton
     {
         [Inject] private GameState _game;
+        [Inject] private Score _score;
 
         #region MonoBehaviour
 
@@ -13,16 +14,16 @@ namespace TwoDoors.GUI
         {
             base.OnEnable();
 
-            _game.OnGameFinished += Disable;
-            _game.OnGameOvered += Disable;
+            _score.OnGameFinished += Disable;
+            _score.OnGameOvered += Disable;
         }
 
         private void OnDisable()
         {
             base.OnDisable();
 
-            _game.OnGameFinished -= Disable;
-            _game.OnGameOvered -= Disable;
+            _score.OnGameFinished -= Disable;
+            _score.OnGameOvered -= Disable;
         }
 
         #endregion

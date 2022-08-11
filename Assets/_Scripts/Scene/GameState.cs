@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace TwoDoors.Scene
 {
@@ -8,16 +9,9 @@ namespace TwoDoors.Scene
     {
         private const string LastFinishedLevel = nameof(LastFinishedLevel);
 
-        [SerializeField] private int _defaultReward = 1;
-        [SerializeField] private int _defaultPunishment = 2;
         [SerializeField] private GameObject _pausePanel;
 
-        private int _score = 0;
-
-        public event Action OnGameFinished;
-        public event Action OnGameOvered;
-        public event Action OnCharacterPassed;
-        public event Action OnPlayerMistaken;
+        [Inject] private Score _score;
 
         public GamePause Pause { get; private set; }
 
@@ -30,6 +24,18 @@ namespace TwoDoors.Scene
             Pause.ContinueTimeFlow();
         }
 
+        private void OnEnable()
+        {
+            _score.OnGameFinished += FinishLevel;
+            _score.OnGameOvered += GameOver;
+        }
+
+        private void OnDisable()
+        {
+            _score.OnGameFinished -= FinishLevel;
+            _score.OnGameOvered -= GameOver;
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -38,36 +44,9 @@ namespace TwoDoors.Scene
 
         #endregion
 
-        public void AddScore()
-        {
-            _score += _defaultReward;
-
-            if (_score >= 10)
-            {
-                FinishLevel();
-                return;
-            }
-
-            OnCharacterPassed?.Invoke();
-        }
-
-        public void SubtractScore()
-        {
-            _score -= _defaultPunishment;
-
-            if (_score < 0)
-            {
-                GameOver();
-                return;
-            }
-
-            OnPlayerMistaken?.Invoke();
-        }
-
         private void FinishLevel()
         {
             Pause.StopTimeFlow();
-            OnGameFinished?.Invoke();
 
             var sceneIndex = SceneManager.GetActiveScene().buildIndex;
             PlayerPrefs.SetInt(LastFinishedLevel, sceneIndex);
@@ -76,7 +55,6 @@ namespace TwoDoors.Scene
         private void GameOver()
         {
             Pause.StopTimeFlow();
-            OnGameOvered?.Invoke();
         }
     }
 }

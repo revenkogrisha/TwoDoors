@@ -12,20 +12,20 @@ namespace TwoDoors.GUI
         [SerializeField] private GameObject _finishPanel;
         [SerializeField] private GameObject _gameOverPanel;
 
-        [Inject] private GameState _game;
+        [Inject] private Score _score;
 
         #region MonoBehaviour
 
         private void OnEnable()
         {
-            _game.OnGameFinished += OpenFinishPanel;
-            _game.OnGameOvered += OpenGameOverPanel;
+            _score.OnGameFinished += OpenFinishPanel;
+            _score.OnGameOvered += OpenGameOverPanel;
         }
 
         private void OnDisable()
         {
-            _game.OnGameFinished -= OpenFinishPanel;
-            _game.OnGameOvered -= OpenGameOverPanel;
+            _score.OnGameFinished -= OpenFinishPanel;
+            _score.OnGameOvered -= OpenGameOverPanel;
         }
 
         #endregion

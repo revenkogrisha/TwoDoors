@@ -1,10 +1,11 @@
 using UnityEngine;
+using Zenject;
 
 namespace TwoDoors.Scene
 {
     public class LevelBound : MonoBehaviour
     {
-        [SerializeField] private GameState _game;
+        [Inject] private Score _score;
 
         #region MonoBehaviour
 
@@ -12,15 +13,10 @@ namespace TwoDoors.Scene
         {
             var other = collision.gameObject;
 
-            CharacterPassedAway(other);
+            Destroy(other);
+            _score.SubtractScore();
         }
 
         #endregion
-
-        private void CharacterPassedAway(GameObject characterObject)
-        {
-            Destroy(characterObject);
-            _game.SubtractScore();
-        }
     }
 }

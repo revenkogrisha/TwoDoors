@@ -8,12 +8,16 @@ namespace TwoDoors.Characters
     [RequireComponent(typeof(Collider2D))]
     public class DragableObject : MonoBehaviour
     {
+        [SerializeField] private Animator _animator;
+
         [Inject] private GameState _game;
+        [Inject] private Score _score;
 
         private bool _isOnDrag = false;
         private Transform _transform;
         private Rigidbody2D _rigidbody2D;
         private Collider2D _collider2D;
+        private CharacterAnimator _characterAnimator;
 
         public bool IsOnDrag => _isOnDrag;
 
@@ -24,11 +28,12 @@ namespace TwoDoors.Characters
             _transform = transform;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
+            _characterAnimator = new(_animator);
         }
         private void OnEnable()
         {
-            _game.OnGameFinished += DisableDrag;
-            _game.OnGameOvered += DisableDrag;
+            _score.OnGameFinished += DisableDrag;
+            _score.OnGameOvered += DisableDrag;
 
             var pause = _game.Pause;
             pause.OnGamePaused += DisableDrag;
@@ -37,8 +42,8 @@ namespace TwoDoors.Characters
 
         private void OnDisable()
         {
-            _game.OnGameFinished -= DisableDrag;
-            _game.OnGameOvered -= DisableDrag;
+            _score.OnGameFinished -= DisableDrag;
+            _score.OnGameOvered -= DisableDrag;
 
             var pause = _game.Pause;
             pause.OnGamePaused -= DisableDrag;
@@ -49,13 +54,13 @@ namespace TwoDoors.Characters
         {
             SetTransformToTouchPoint();
             DisableMovement();
-            _isOnDrag = true;
+            SetAsOnDrag();
         }
 
         private void OnMouseUp()
         {
             EnableMovement();
-            _isOnDrag = false;
+            SetAsNotOnDrag();
         }
 
         #endregion
@@ -80,6 +85,18 @@ namespace TwoDoors.Characters
         private void EnableMovement()
         {
             _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        }
+
+        public void SetAsOnDrag()
+        {
+            _characterAnimator.SetAsOnDrag();
+            _isOnDrag = true;
+        }
+
+        public void SetAsNotOnDrag()
+        {
+            _characterAnimator.SetAsNotOnDrag();
+            _isOnDrag = false;
         }
 
         private void DisableDrag()
