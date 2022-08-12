@@ -20,7 +20,19 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -44,13 +56,13 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 453f7186184c1fe4994d3481cc54ee2b, type: 3}
   - {fileID: 21300000, guid: 0fef27f632d5fad40b3ed299efa08d68, type: 3}
-  - {fileID: 21300000, guid: 3603a23ad5ff24244bfa5fc993715247, type: 3}
+  - {fileID: -1798955213, guid: 3603a23ad5ff24244bfa5fc993715247, type: 3}
   - {fileID: 21300000, guid: 0cc2e61bc6ccd6041abe3c0fc6b9803c, type: 3}
   - {fileID: 21300000, guid: 1d8b596b91704074cac7f792d970a522, type: 3}
   m_PackedSpriteNamesToIndex:
   - DogsJaw
   - DogsBody
-  - DogsHead
+  - DogsHead_0
   - DogsTail
   - DogsPaw
   m_RenderDataMap: {}
