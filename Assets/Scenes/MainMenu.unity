@@ -1673,10 +1673,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4610924672804739641, guid: 4f1c975746628e84bbb34f59f1309f89, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3012929185960246318, guid: 4f1c975746628e84bbb34f59f1309f89, type: 3}
       propertyPath: m_Name
       value: BGMusic
