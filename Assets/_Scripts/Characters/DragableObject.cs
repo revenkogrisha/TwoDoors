@@ -12,7 +12,6 @@ namespace TwoDoors.Characters
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private AudioSource _dragSound;
-        [SerializeField] private AudioSource _mouseUpSound;
 
         [Inject] private GamePause _pause;
         [Inject] private Score _score;
@@ -35,7 +34,7 @@ namespace TwoDoors.Characters
         private void Awake()
         {
             _characterAnimator = new(this, _animator);
-            _audio = new(this, _dragSound, _mouseUpSound);
+            _audio = new(this, _dragSound);
 
             _transform = transform;
             _rigidbody2D = GetComponent<Rigidbody2D>();

@@ -21,8 +21,6 @@ namespace TwoDoors.Doors
         public event Action OnDoorOpened;
         public event Action OnDoorClosed;
 
-        public bool IsCharacterEntered { get; private set; } = false;
-
         #region MonoBehaviour
 
         private void Awake()
@@ -37,20 +35,18 @@ namespace TwoDoors.Doors
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            Router.Route<Character>(TryPassCharacter, other);
+            Router.Route<Character>(other, TryPassCharacter);
         }
 
         #endregion
 
-        public void Enter(Character character)
+        public void Open()
         {
-            IsCharacterEntered = true;
             OnDoorOpened?.Invoke();
         }
 
-        public void Exit()
+        public void Close()
         {
-            IsCharacterEntered = false;
             OnDoorClosed?.Invoke();
         }
 
@@ -61,24 +57,16 @@ namespace TwoDoors.Doors
 
             if (_charactersWhoPasses.Contains(character.Id))
             {
-                AddScore();
+                _score.AddScore();
                 Destroy(character.gameObject);
+                Close();
 
                 return;
             }
 
-            SubtractScore();
-            Destroy(character.gameObject);
-        }
-
-        private void AddScore()
-        {
-            _score.AddScore();
-        }
-
-        private void SubtractScore()
-        {
             _score.SubtractScore();
+            Destroy(character.gameObject);
+            Close();
         }
     }
 }

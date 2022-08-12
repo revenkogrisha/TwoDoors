@@ -16,11 +16,12 @@ namespace TwoDoors.Characters
         private IMoveable _moveable;
         private DragableObject _dragable;
         private bool _isTryingToPass = false;
-        private Door _doorEntered;
 
         public CharactersId Id => _id;
 
         public bool IsTryingToPass => _isTryingToPass;
+
+        public bool IsOnDrag { get { return _dragable.IsOnDrag; } }
 
         #region MonoBehaviour
 
@@ -44,14 +45,14 @@ namespace TwoDoors.Characters
             StartCoroutine(TryToPass());
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerStay2D(Collider2D other)
         {
-            Router.Route<Door>(TryEnterTheDoor, collision);
+            Router.Route<Door>(other, TryOpen);
         }
 
-        private void OnTriggerExit2D()
+        private void OnTriggerExit2D(Collider2D other)
         {
-            _doorEntered?.Exit();
+            Router.Route<Door>(other, TryClose);
         }
 
         #endregion
@@ -70,14 +71,16 @@ namespace TwoDoors.Characters
             _isTryingToPass = false;
         }
 
-        private void TryEnterTheDoor(Door door)
+        private void TryOpen(Door door)
         {
-            if (door.IsCharacterEntered
-                || !_dragable.IsOnDrag)
-                return;
+            if (IsOnDrag)
+                door.Open();
+        }
 
-            _doorEntered = door;
-            _doorEntered.Enter(this);
+        private void TryClose(Door door)
+        {
+            if (IsOnDrag)
+                door.Close();
         }
     }
 }
