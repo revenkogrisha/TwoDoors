@@ -1,5 +1,7 @@
+using TwoDoors.Save;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 [DisallowMultipleComponent]
 public class LevelButtonUnlocker : MonoBehaviour
@@ -8,11 +10,13 @@ public class LevelButtonUnlocker : MonoBehaviour
 
     [SerializeField] private Button[] _allButtons;
 
+    [Inject] private SaveService _saveService;
+
     #region MonoBehaviour
 
     private void Awake()
     {
-        var lastFinishedLevelIndex = PlayerPrefs.GetInt(LastFinishedLevel, 0);
+        var lastFinishedLevelIndex = _saveService.LastFinishedLevel;
 
         for (int i = 0; i < lastFinishedLevelIndex; i++)
         {
