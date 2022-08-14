@@ -3,7 +3,7 @@ using UnityEngine;
 namespace TwoDoors.Doors
 {
     [DisallowMultipleComponent]
-    public class DoorAnimator
+    public class DoorAnimator : INonMonoEventSubscriber
     {
         private const string Opened = nameof(Opened);
     

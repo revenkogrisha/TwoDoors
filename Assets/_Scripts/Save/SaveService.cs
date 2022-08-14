@@ -5,11 +5,14 @@ namespace TwoDoors.Save
 {
     public class SaveService : MonoBehaviour
     {
+        private const string Record = nameof(Record);
+
         [SerializeField] private AudioMixerGroup _mixer;
 
         private ISaveSystem _saveSystem;
 
         public int LastFinishedLevel { get; private set; }
+        public int RecordScore { get; private set; }
         public float MusicVolume { get; private set; }
 
         #region MonoBehaviour
@@ -33,6 +36,7 @@ namespace TwoDoors.Save
             var data = new SaveData();
 
             data.LastLevelId = PlayerPrefs.GetInt(nameof(LastFinishedLevel));
+            data.Record = PlayerPrefs.GetInt(Record, 0);
             _mixer.audioMixer.GetFloat(
                 nameof(MusicVolume), 
                 out data.MusicVolume
@@ -41,12 +45,19 @@ namespace TwoDoors.Save
             _saveSystem.Save(data);
         }
 
-        private void Load()
+        public void Load()
         {
             var data = _saveSystem.Load();
 
             LastFinishedLevel = data.LastLevelId;
+            RecordScore = data.Record;
             MusicVolume = data.MusicVolume;
+        }
+
+        public void ResetProcess()
+        {
+            _saveSystem.Save(new SaveData());
+            Load();
         }
     }
 }

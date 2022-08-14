@@ -10,8 +10,12 @@ namespace TwoDoors.Installers
 
         public override void InstallBindings()
         {
+            var saveInstance = Container
+                .InstantiatePrefabForComponent<SaveService>(
+                _saveService, new Vector3(), Quaternion.identity, null);
+
             Container.Bind<SaveService>()
-                .FromInstance(_saveService)
+                .FromInstance(saveInstance)
                 .AsSingle()
                 .NonLazy();
         }
