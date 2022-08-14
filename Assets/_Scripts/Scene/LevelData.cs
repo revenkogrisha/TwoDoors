@@ -13,6 +13,11 @@ namespace TwoDoors.Scene
             _id = id;
         }
 
-        public void SaveLevel() => PlayerPrefs.SetInt(LastFinishedLevel, _id);
+        public void SaveLevel()
+        {
+            var highestId = PlayerPrefs.GetInt(LastFinishedLevel);
+            if (highestId < _id)
+                PlayerPrefs.SetInt(LastFinishedLevel, _id);
+        }
     }
 }

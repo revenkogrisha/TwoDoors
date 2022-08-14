@@ -15,7 +15,7 @@ namespace TwoDoors.Scene
             var other = collision.gameObject;
 
             Destroy(other);
-            _score.SubtractScore();
+            _score.InitFail();
         }
 
         #endregion

@@ -5,13 +5,13 @@ namespace TwoDoors.Scene
 {
     public class Timer : MonoBehaviour
     {
-        public Action OnCooldownPassed;
-
         [SerializeField] private int _cooldown = 2;
 
         private float _time = 0;
         private int _timeInSeconds = 0;
         private int _checkedTime = 0;
+
+        public Action OnCooldownPassed;
 
         public int TimeInSeconds
         {

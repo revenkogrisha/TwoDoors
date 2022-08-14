@@ -6,7 +6,7 @@ using Zenject;
 namespace TwoDoors.GUI
 {
     [DisallowMultipleComponent]
-    public class GameUISystem : MonoBehaviour
+    public class GameUIView : MonoBehaviour
     {
         private const int _menuSceneId = 0;
         private const string Opened = nameof(Opened);
@@ -27,13 +27,17 @@ namespace TwoDoors.GUI
 
         private void OnEnable()
         {
-            _score.OnGameFinished += OpenFinishPanel;
+            if (_score is LevelScore levelScore)
+                levelScore.OnGameFinished += OpenFinishPanel;
+
             _score.OnGameOvered += OpenGameOverPanel;
         }
 
         private void OnDisable()
         {
-            _score.OnGameFinished -= OpenFinishPanel;
+            if (_score is LevelScore levelScore)
+                levelScore.OnGameFinished -= OpenFinishPanel;
+
             _score.OnGameOvered -= OpenGameOverPanel;
         }
 

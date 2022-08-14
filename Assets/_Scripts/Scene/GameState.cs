@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace TwoDoors.Scene
@@ -7,7 +6,6 @@ namespace TwoDoors.Scene
     [DisallowMultipleComponent]
     public class GameState : MonoBehaviour
     {
-        [SerializeField] private GameObject _pausePanel;
         [SerializeField, Min(1)] private int _levelId;
 
         [Inject] private Score _score;
@@ -26,13 +24,17 @@ namespace TwoDoors.Scene
 
         private void OnEnable()
         {
-            _score.OnGameFinished += FinishLevel;
+            if (_score is LevelScore levelScore)
+                levelScore.OnGameFinished += FinishLevel;
+
             _score.OnGameOvered += GameOver;
         }
 
         private void OnDisable()
         {
-            _score.OnGameFinished -= FinishLevel;
+            if (_score is LevelScore levelScore)
+                levelScore.OnGameFinished -= FinishLevel;
+
             _score.OnGameOvered -= GameOver;
         }
 

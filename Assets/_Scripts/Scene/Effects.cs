@@ -38,14 +38,18 @@ namespace TwoDoors.Scene
 
         private void OnEnable()
         {
-            _score.OnCharacterPassed += RaiseParticles;
-            _score.OnPlayerMistaken += RaiseShake;
+            if (_score is LevelScore levelScore)
+                levelScore.OnPlayerFailed += RaiseShake;
+
+            _score.OnPlayerScored += RaiseParticles;
         }
 
         private void OnDisable()
         {
-            _score.OnCharacterPassed -= RaiseParticles;
-            _score.OnPlayerMistaken -= RaiseShake;
+            if (_score is LevelScore levelScore)
+                levelScore.OnPlayerFailed -= RaiseShake;
+
+            _score.OnPlayerScored -= RaiseParticles;
         }
 
         private void Awake()

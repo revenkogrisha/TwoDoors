@@ -16,13 +16,13 @@ namespace TwoDoors.Characters
         [Inject] private GamePause _pause;
         [Inject] private Score _score;
 
+        private CharacterAnimator _characterAnimator;
+        private CharacterAudio _audio;
+
         private bool _isOnDrag = false;
         private Transform _transform;
         private Rigidbody2D _rigidbody2D;
         private Collider2D _collider2D;
-
-        private CharacterAnimator _characterAnimator;
-        private CharacterAudio _audio;
 
         public event Action OnDragStarted;
         public event Action OnDragStopped;
@@ -42,8 +42,12 @@ namespace TwoDoors.Characters
         }
         private void OnEnable()
         {
-            _score.OnGameFinished += DisableDrag;
-            _score.OnGameFinished += DisableMovement;
+            if (_score is LevelScore levelScore)
+            {
+                levelScore.OnGameFinished += DisableDrag;
+                levelScore.OnGameFinished += DisableMovement;
+            }
+
             _score.OnGameOvered += DisableDrag;
             _score.OnGameOvered += DisableMovement;
 
@@ -58,8 +62,12 @@ namespace TwoDoors.Characters
             _audio.Disable();
             _characterAnimator.Disable();
 
-            _score.OnGameFinished -= DisableMovement;
-            _score.OnGameFinished -= DisableDrag;
+            if (_score is LevelScore levelScore)
+            {
+                levelScore.OnGameFinished -= DisableDrag;
+                levelScore.OnGameFinished -= DisableMovement;
+            }
+
             _score.OnGameOvered -= DisableDrag;
             _score.OnGameOvered -= DisableMovement;
 
@@ -72,18 +80,20 @@ namespace TwoDoors.Characters
         private void OnMouseDrag()
         {
             if (!_isOnDrag)
+            {
                 OnDragStarted?.Invoke();
+                _isOnDrag = true;
+            }
 
             SetTransformToTouchPoint();
             DisableMovement();
-            _isOnDrag = true;
         }
 
         private void OnMouseUp()
         {
             OnDragStopped?.Invoke();
-            EnableMovement();
             _isOnDrag = false;
+            EnableMovement();
         }
 
         #endregion

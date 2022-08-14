@@ -2,7 +2,7 @@
 
 namespace TwoDoors.Characters
 {
-    public class CharacterAudio
+    public class CharacterAudio : INonMonoEventSubscriber
     {
         private DragableObject _dragable;
         private AudioSource _dragSound;
@@ -15,14 +15,8 @@ namespace TwoDoors.Characters
             _dragable.OnDragStarted += PlayDragSound;
         }
 
-        public void Disable()
-        {
-            _dragable.OnDragStarted -= PlayDragSound;
-        }
+        public void Disable() => _dragable.OnDragStarted -= PlayDragSound;
 
-        private void PlayDragSound()
-        {
-            _dragSound.Play();
-        }
+        private void PlayDragSound() => _dragSound.Play();
     }
 }

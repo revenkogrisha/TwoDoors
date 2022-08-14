@@ -14,7 +14,9 @@ namespace TwoDoors.GUI
         {
             base.OnEnable();
 
-            _score.OnGameFinished += Disable;
+            if (_score is LevelScore levelScore)
+                levelScore.OnGameFinished += Disable;
+
             _score.OnGameOvered += Disable;
         }
 
@@ -22,7 +24,9 @@ namespace TwoDoors.GUI
         {
             base.OnDisable();
 
-            _score.OnGameFinished -= Disable;
+            if (_score is LevelScore levelScore)
+                levelScore.OnGameFinished -= Disable;
+
             _score.OnGameOvered -= Disable;
         }
 
