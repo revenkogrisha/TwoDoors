@@ -6,10 +6,10 @@ namespace TwoDoors.Characters.Movement
     [DisallowMultipleComponent]
     public class ForwardMovement : MonoBehaviour, IMoveable
     {
-        [SerializeField, Range(0f, 10f)] protected float Speed;
         [SerializeField] protected MovementDirection Direction;
-        protected Rigidbody2D Rigidbody2D;
+        [SerializeField, Range(0f, 10f)] protected float Speed;
 
+        protected Rigidbody2D Rigidbody2D;
 
         #region MonoBehaviour
 

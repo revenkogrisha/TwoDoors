@@ -7,8 +7,7 @@ namespace TwoDoors.Characters
     [RequireComponent(typeof(Timer))]
     public class CharactersSpawner : MonoBehaviour
     {
-        [SerializeField] private CharacterFactory _characterFactory;
-        [SerializeField] private CharactersId[] _charactersInGame;
+        [SerializeField] private Character[] _charactersInGame;
 
         [Inject] private DiContainer _container;
 
@@ -36,8 +35,7 @@ namespace TwoDoors.Characters
         private void SpawnRandomCharacter()
         {
             int index = Random.Range(0, _charactersInGame.Length);
-            var id = _charactersInGame[index];
-            var characterObject = _characterFactory.GetCharacter(id);
+            var characterObject = _charactersInGame[index];
 
             _container.InstantiatePrefab(characterObject);
         }

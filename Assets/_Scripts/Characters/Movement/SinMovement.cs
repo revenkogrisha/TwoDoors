@@ -6,7 +6,8 @@ namespace TwoDoors.Characters.Movement
     [DisallowMultipleComponent]
     public class SinMovement : MonoBehaviour, IMoveable
     {
-        [SerializeField] private float _speed;
+        [SerializeField, Min(1f)] private float _speed;
+        [SerializeField] private MovementDirection _direction;
 
         private readonly float _waveFriquency = 2f;
         private readonly float _waveWidth = 6f;
@@ -14,6 +15,11 @@ namespace TwoDoors.Characters.Movement
         private float _birthTime;
         private Rigidbody2D _rigidbody2D;
         private Transform _transform;
+
+        private float Speed
+        {
+            get { return _speed * (float)_direction; }
+        }
 
         private Vector3 Pos
         {
@@ -43,7 +49,7 @@ namespace TwoDoors.Characters.Movement
             float sinTheta = Mathf.Sin(theta);
 
             movement.y = _startY + _waveWidth * sinTheta - 1f;
-            movement.x = _speed;
+            movement.x = Speed;
 
             _rigidbody2D.velocity = movement;
         }
