@@ -13,10 +13,13 @@ namespace TwoDoors.Doors
         [SerializeField] private Animator _animator;
         [SerializeField] private DoorsId _id;
         [SerializeField] private List<CharactersId> _charactersWhoPasses;
+        [SerializeField] private AudioSource _successSound;
+        [SerializeField] private AudioSource _failSound;
 
         [Inject] private Score _score;
 
         private DoorAnimator _doorAnimator;
+        private DoorAudio _audio;
 
         public event Action OnDoorOpened;
         public event Action OnDoorClosed;
@@ -25,17 +28,19 @@ namespace TwoDoors.Doors
 
         private void Awake()
         {
-            _doorAnimator = new DoorAnimator(this, _animator);
+            _doorAnimator = new(this, _animator);
+            _audio = new(_successSound, _failSound, _score);
         }
 
         private void OnDisable()
         {
             _doorAnimator.Disable();
+            _audio.Disable();
         }
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            Router.Route<Character>(other, TryPassCharacter);
+            Tools.DoIfIsNotNull<Character>(other, TryPassCharacter);
         }
 
         #endregion
@@ -64,7 +69,7 @@ namespace TwoDoors.Doors
                 return;
             }
 
-            _score.SubtractScore();
+            _score.InitFail();
             Destroy(character.gameObject);
             Close();
         }
