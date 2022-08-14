@@ -89,7 +89,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 7890588773375184714}
   _dragSound: {fileID: 4585401300351993268}
-  _mouseUpSound: {fileID: 4585401300351993268}
 --- !u!114 &1750394476896901751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125fe088fd50ace40b4dbaaa8556013f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: -5
+  _speed: 5
+  _direction: -1
 --- !u!1 &4752522303553192121
 GameObject:
   m_ObjectHideFlags: 0
