@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace TwoDoors
 {
-    public static class Router
+    public static class Tools
     {
-        public static bool Route<T>(Collider2D contaiter, Action<T> handler)
+        public static bool DoIfIsNotNull<T>(Collider2D contaiter, Action<T> handler)
         {
             if (contaiter.GetComponent<T>() != null)
             {
@@ -19,7 +19,7 @@ namespace TwoDoors
             return false;
         }
 
-        public static bool Route<T>(Collider2D contaiter, params Action[] handlers)
+        public static bool DoIfIsNotNull<T>(Collider2D contaiter, params Action[] handlers)
         {
             if (contaiter.GetComponent<T>() != null)
             {
