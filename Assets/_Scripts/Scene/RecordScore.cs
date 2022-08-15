@@ -13,6 +13,7 @@ namespace TwoDoors.Scene
 
         public override event Action OnGameOvered;
         public override event Action OnPlayerScored;
+        public event Action OnRecordBreaked;
 
         public override void AddScore()
         {
@@ -23,15 +24,19 @@ namespace TwoDoors.Scene
 
         public override void InitFail()
         {
-            OnGameOvered?.Invoke();
-
             var record = _saveService.RecordScore;
             if (Amount > record)
             {
+                OnRecordBreaked?.Invoke();
+
                 PlayerPrefs.SetInt(Record, Amount);
                 _saveService.Save();
                 _saveService.Load();
+
+                return;
             }
+
+            OnGameOvered?.Invoke();
         }
     }
 }

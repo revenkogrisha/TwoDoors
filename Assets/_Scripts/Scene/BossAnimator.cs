@@ -7,11 +7,13 @@ namespace TwoDoors.Scene
     public class BossAnimator : MonoBehaviour
     {
         private const string IsTriggered = nameof(IsTriggered);
+        private const string IsTriggerEnded = nameof(IsTriggerEnded);
 
         [Inject] private Score _score;
 
         private Animator _animator;
         private int _isTriggeredId;
+        private int _isTriggerEndedId;
 
         #region MonoBehaviour
 
@@ -19,6 +21,7 @@ namespace TwoDoors.Scene
         {
             _animator = GetComponent<Animator>();
             _isTriggeredId = Animator.StringToHash(IsTriggered);
+            _isTriggerEndedId = Animator.StringToHash(IsTriggerEnded);
         }
 
         private void OnEnable()
@@ -35,8 +38,8 @@ namespace TwoDoors.Scene
 
         #endregion
 
-        private void StartPunishment() => _animator.SetBool(_isTriggeredId, true);
+        private void StartPunishment() => _animator.SetTrigger(_isTriggeredId);
 
-        private void EndPunishment() => _animator.SetBool(_isTriggeredId, false);
+        private void EndPunishment() => _animator.SetTrigger(_isTriggerEndedId);
     }
 }
