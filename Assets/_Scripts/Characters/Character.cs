@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using TwoDoors.Characters.Movement;
+using TwoDoors.Characters.Moveable;
 using TwoDoors.Doors;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ namespace TwoDoors.Characters
     {
         [SerializeField] private CharactersId _id;
 
-        private IMoveable _moveable;
+        private Movement _moveable;
         private DragableObject _dragable;
         private bool _isTryingToPass = false;
 
@@ -27,7 +27,7 @@ namespace TwoDoors.Characters
 
         private void Awake()
         {
-            _moveable = GetComponent<IMoveable>();
+            _moveable = GetComponent<Movement>();
             _dragable = GetComponent<DragableObject>();
 
             if (_moveable == null)

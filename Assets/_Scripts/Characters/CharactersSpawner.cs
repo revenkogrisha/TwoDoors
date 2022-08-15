@@ -1,3 +1,4 @@
+using TwoDoors.Characters.Moveable;
 using TwoDoors.Scene;
 using UnityEngine;
 using Zenject;
@@ -7,7 +8,8 @@ namespace TwoDoors.Characters
     [RequireComponent(typeof(Timer))]
     public class CharactersSpawner : MonoBehaviour
     {
-        [SerializeField] private Character[] _charactersInGame;
+        [SerializeField] private Movement[] _charactersInGame;
+        [SerializeField] private MovementData _data;
 
         [Inject] private DiContainer _container;
 
@@ -35,9 +37,11 @@ namespace TwoDoors.Characters
         private void SpawnRandomCharacter()
         {
             int index = Random.Range(0, _charactersInGame.Length);
-            var characterObject = _charactersInGame[index];
+            var item = _charactersInGame[index];
+            var character = _container.InstantiatePrefab(item);
+            var movement = character.GetComponent<Movement>();
 
-            _container.InstantiatePrefab(characterObject);
+            movement.InitData(_data);
         }
     }
 }

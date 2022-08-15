@@ -1,7 +1,7 @@
 using UnityEngine;
 using TwoDoors.Scene;
 
-namespace TwoDoors.Characters.Movement
+namespace TwoDoors.Characters.Moveable
 {
     [RequireComponent(typeof(Timer))]
     [DisallowMultipleComponent]
@@ -38,7 +38,8 @@ namespace TwoDoors.Characters.Movement
             if (_timer.TimeInSeconds < _nonChangingDirectionTime)
                 return;
 
-            if (Random.Range(0, 2) == 0)
+            var random = Random.Range(0, 2);
+            if (random == 0)
             {
                 ChangeDirection();
             }
@@ -55,6 +56,7 @@ namespace TwoDoors.Characters.Movement
         {
             var newScale = new Vector2(
                             _transform.localScale.x * -1f, _transform.localScale.y);
+
             _transform.localScale = newScale;
         }
     }
