@@ -1,14 +1,11 @@
 using UnityEngine;
 
-namespace TwoDoors.Characters.Movement
+namespace TwoDoors.Characters.Moveable
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [DisallowMultipleComponent]
-    public class ForwardMovement : MonoBehaviour, IMoveable
+    public class ForwardMovement : Movement
     {
-        [SerializeField] protected MovementDirection Direction;
-        [SerializeField, Range(0f, 10f)] protected float Speed;
-
         protected Rigidbody2D Rigidbody2D;
 
         #region MonoBehaviour
@@ -20,9 +17,12 @@ namespace TwoDoors.Characters.Movement
 
         #endregion
 
-        public virtual void Move()
+        public override void Move()
         {
-            Vector3 velocity = new(Speed * (float)Direction, Rigidbody2D.velocity.y);
+            var velocity = new Vector3(
+                Speed * (float)Direction,
+                Rigidbody2D.velocity.y);
+
             Rigidbody2D.velocity = velocity;
         }
     }

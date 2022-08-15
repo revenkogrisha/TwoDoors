@@ -1,7 +1,7 @@
 using UnityEngine;
 using TwoDoors.Scene;
 
-namespace TwoDoors.Characters.Movement
+namespace TwoDoors.Characters.Moveable
 {
     [RequireComponent(typeof(Timer))]
     [RequireComponent(typeof(Rigidbody2D))]

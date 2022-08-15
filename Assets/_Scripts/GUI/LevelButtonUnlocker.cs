@@ -16,6 +16,8 @@ public class LevelButtonUnlocker : MonoBehaviour
 
     private void Awake()
     {
+        _saveService.Load();
+
         var lastFinishedLevelIndex = _saveService.LastFinishedLevel;
 
         for (int i = 0; i < lastFinishedLevelIndex; i++)

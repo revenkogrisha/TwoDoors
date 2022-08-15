@@ -1,25 +1,17 @@
 using UnityEngine;
 
-namespace TwoDoors.Characters.Movement
+namespace TwoDoors.Characters.Moveable
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [DisallowMultipleComponent]
-    public class SinMovement : MonoBehaviour, IMoveable
+    public class SinMovement : Movement
     {
-        [SerializeField, Min(1f)] private float _speed;
-        [SerializeField] private MovementDirection _direction;
-
         private readonly float _waveFriquency = 2f;
         private readonly float _waveWidth = 6f;
         private float _startY;
         private float _birthTime;
         private Rigidbody2D _rigidbody2D;
         private Transform _transform;
-
-        private float Speed
-        {
-            get { return _speed * (float)_direction; }
-        }
 
         private Vector3 Pos
         {
@@ -41,7 +33,7 @@ namespace TwoDoors.Characters.Movement
             _birthTime = Time.time;
         }
 
-        public void Move()
+        public override void Move()
         {
             Vector3 movement = Vector2.zero;
             float age = Time.time - _birthTime;
@@ -49,7 +41,7 @@ namespace TwoDoors.Characters.Movement
             float sinTheta = Mathf.Sin(theta);
 
             movement.y = _startY + _waveWidth * sinTheta - 1f;
-            movement.x = Speed;
+            movement.x = Speed * (float)Direction;
 
             _rigidbody2D.velocity = movement;
         }
