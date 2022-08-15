@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46dfba07395aa944887e87b86cddfd33, type: 3}
-  m_Name: Level1MovementData
+  m_Name: FasterMovementData 1
   m_EditorClassIdentifier: 
-  Speed: 5
-  Direction: 1
+  Speed: 6
+  Direction: -1
