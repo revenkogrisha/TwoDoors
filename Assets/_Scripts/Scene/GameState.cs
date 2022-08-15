@@ -1,3 +1,4 @@
+using TwoDoors.Save;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +11,7 @@ namespace TwoDoors.Scene
 
         [Inject] private Score _score;
         [Inject] private GamePause _pause;
+        [Inject] private SaveService _saveService;
 
         private LevelData _levelData;
 
@@ -17,7 +19,7 @@ namespace TwoDoors.Scene
 
         private void Awake()
         {
-            _levelData = new(_levelId);
+            _levelData = new(_levelId, _saveService);
 
             _pause.ContinueTimeFlow();
         }
@@ -27,6 +29,9 @@ namespace TwoDoors.Scene
             if (_score is LevelScore levelScore)
                 levelScore.OnGameFinished += FinishLevel;
 
+            if (_score is RecordScore recordScore)
+                recordScore.OnRecordBreaked += GameOver;
+
             _score.OnGameOvered += GameOver;
         }
 
@@ -34,6 +39,9 @@ namespace TwoDoors.Scene
         {
             if (_score is LevelScore levelScore)
                 levelScore.OnGameFinished -= FinishLevel;
+
+            if (_score is RecordScore recordScore)
+                recordScore.OnRecordBreaked -= GameOver;
 
             _score.OnGameOvered -= GameOver;
         }

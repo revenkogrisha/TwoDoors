@@ -373,9 +373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultReward: 1
-  _defaultPunishment: 1
+  _defaultPunishment: 2
   _winScore: 10
-  _loseScore: -1
+  _loseScore: 0
 --- !u!4 &153657590
 Transform:
   m_ObjectHideFlags: 0
@@ -6796,10 +6796,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _charactersInGame:
-  - {fileID: 4326805631356836474, guid: 7f9761b559706134bba93c22eab1fdb4, type: 3}
-  - {fileID: 7448763038572620801, guid: 6efbb8021af37594fa2d7a35a68ebcb6, type: 3}
   - {fileID: 8847515262131554105, guid: 7827db4b1907b2744872804f9a37f554, type: 3}
-  - {fileID: 2264131364367101297, guid: 90f5b13b59a2e4544951671af4e307da, type: 3}
+  - {fileID: 7448763038572620801, guid: 6efbb8021af37594fa2d7a35a68ebcb6, type: 3}
+  - {fileID: 4326805631356836474, guid: 7f9761b559706134bba93c22eab1fdb4, type: 3}
   _data: {fileID: 11400000, guid: 38a60cb5a5d98724683d704703ca4b04, type: 2}
 --- !u!114 &1470179167
 MonoBehaviour:
@@ -7061,7 +7060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5f93337ac7ed94f870c90db6dd16d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelId: 1
+  _levelId: 4
 --- !u!1 &1805314913
 GameObject:
   m_ObjectHideFlags: 0
