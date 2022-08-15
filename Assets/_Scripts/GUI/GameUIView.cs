@@ -30,6 +30,9 @@ namespace TwoDoors.GUI
             if (_score is LevelScore levelScore)
                 levelScore.OnGameFinished += OpenFinishPanel;
 
+            if (_score is RecordScore recordScore)
+                recordScore.OnRecordBreaked += OpenFinishPanel;
+
             _score.OnGameOvered += OpenGameOverPanel;
         }
 
@@ -37,6 +40,9 @@ namespace TwoDoors.GUI
         {
             if (_score is LevelScore levelScore)
                 levelScore.OnGameFinished -= OpenFinishPanel;
+
+            if (_score is RecordScore recordScore)
+                recordScore.OnRecordBreaked -= OpenFinishPanel;
 
             _score.OnGameOvered -= OpenGameOverPanel;
         }
