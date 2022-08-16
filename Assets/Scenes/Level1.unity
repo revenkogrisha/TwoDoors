@@ -391,11 +391,6 @@ Transform:
   m_Father: {fileID: 991053684}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &346537252 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6409709301221329918, guid: 2d1c6bc9a1b049d4b866a18bfda94d49, type: 3}
-  m_PrefabInstance: {fileID: 6409709300879931098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &346537253 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6409709301221329919, guid: 2d1c6bc9a1b049d4b866a18bfda94d49, type: 3}
@@ -663,6 +658,7 @@ GameObject:
   - component: {fileID: 565863035}
   - component: {fileID: 565863034}
   - component: {fileID: 565863038}
+  - component: {fileID: 565863039}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -767,8 +763,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279bdc495eba5614e8ba70f6a82193d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _finishPanel: {fileID: 346537252}
-  _gameOverPanel: {fileID: 1452599222}
+  _finishPanelAnimator: {fileID: 6409709300879931099}
+  _gameOverPanelAnimator: {fileID: 8368421296180539078}
+--- !u!114 &565863039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565863033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f45284774b8bca489b79f0acc8bfbc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &767869924
 GameObject:
   m_ObjectHideFlags: 0
@@ -6669,11 +6677,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1452599222 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8368421295468267891, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
-  m_PrefabInstance: {fileID: 8368421296180539077}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1452599223 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8368421295468267890, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
@@ -8216,7 +8219,7 @@ PrefabInstance:
     - target: {fileID: 6409709300327769755, guid: 2d1c6bc9a1b049d4b866a18bfda94d49, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 565863038}
+      objectReference: {fileID: 565863039}
     - target: {fileID: 6409709300327769755, guid: 2d1c6bc9a1b049d4b866a18bfda94d49, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -8231,7 +8234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6409709300327769755, guid: 2d1c6bc9a1b049d4b866a18bfda94d49, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TwoDoors.GUI.GameUISystem, Assembly-CSharp
+      value: TwoDoors.GUI.GameSceneLoader, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6409709300327769755, guid: 2d1c6bc9a1b049d4b866a18bfda94d49, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -8331,6 +8334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d1c6bc9a1b049d4b866a18bfda94d49, type: 3}
+--- !u!95 &6409709300879931099 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5195077269941127149, guid: 2d1c6bc9a1b049d4b866a18bfda94d49, type: 3}
+  m_PrefabInstance: {fileID: 6409709300879931098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7076495224582001842
 Transform:
   m_ObjectHideFlags: 0
@@ -8357,7 +8365,11 @@ PrefabInstance:
     - target: {fileID: 7100708497226674292, guid: 577c78210d671994a95de432fa904324, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 565863038}
+      objectReference: {fileID: 565863039}
+    - target: {fileID: 7100708497226674292, guid: 577c78210d671994a95de432fa904324, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TwoDoors.GUI.GameSceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7100708497329671127, guid: 577c78210d671994a95de432fa904324, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8647,7 +8659,7 @@ PrefabInstance:
     - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 565863038}
+      objectReference: {fileID: 565863039}
     - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -8661,6 +8673,10 @@ PrefabInstance:
       value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TwoDoors.GUI.GameSceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
       objectReference: {fileID: 0}
@@ -8670,3 +8686,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
+--- !u!95 &8368421296180539078 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 512154998162323206, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
+  m_PrefabInstance: {fileID: 8368421296180539077}
+  m_PrefabAsset: {fileID: 0}
