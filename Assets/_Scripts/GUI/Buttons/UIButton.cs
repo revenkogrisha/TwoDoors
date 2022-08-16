@@ -22,6 +22,7 @@ namespace TwoDoors.GUI.Buttons
         {
             _button.onClick.AddListener(PlaySound);
             _button.onClick.AddListener(OnClicked);
+            _button.onClick.AddListener(PlaySound);
         }
 
         protected void OnDisable()
