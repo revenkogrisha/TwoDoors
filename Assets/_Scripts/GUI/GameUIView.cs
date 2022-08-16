@@ -1,6 +1,5 @@
 using TwoDoors.Scene;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace TwoDoors.GUI
@@ -8,11 +7,10 @@ namespace TwoDoors.GUI
     [DisallowMultipleComponent]
     public class GameUIView : MonoBehaviour
     {
-        private const int _menuSceneId = 0;
         private const string Opened = nameof(Opened);
 
-        [SerializeField] private GameObject _finishPanel;
-        [SerializeField] private GameObject _gameOverPanel;
+        [SerializeField] private Animator _finishPanelAnimator;
+        [SerializeField] private Animator _gameOverPanelAnimator;
 
         [Inject] private Score _score;
 
@@ -51,25 +49,14 @@ namespace TwoDoors.GUI
 
         public void OpenFinishPanel()
         {
-            _finishPanel.SetActive(true);
-            _finishPanel.GetComponent<Animator>().SetTrigger(_openedId);
+            _finishPanelAnimator.gameObject.SetActive(true);
+            _finishPanelAnimator.SetTrigger(_openedId);
         }
 
         public void OpenGameOverPanel()
         {
-            _gameOverPanel.SetActive(true);
-            _finishPanel.GetComponent<Animator>().SetTrigger(_openedId);
-        }
-
-        public void BackToMenu()
-        {
-            SceneManager.LoadScene(_menuSceneId);
-        }
-
-        public void RestartLevel()
-        {
-            var thisSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(thisSceneIndex);
+            _gameOverPanelAnimator.gameObject.SetActive(true);
+            _finishPanelAnimator.SetTrigger(_openedId);
         }
     }
 }
