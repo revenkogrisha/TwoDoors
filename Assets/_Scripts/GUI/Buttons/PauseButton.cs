@@ -1,7 +1,7 @@
 using TwoDoors.Scene;
 using Zenject;
 
-namespace TwoDoors.GUI
+namespace TwoDoors.GUI.Buttons
 {
     public class PauseButton : UIButton
     {

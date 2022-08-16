@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace TwoDoors.GUI
+namespace TwoDoors.GUI.Buttons
 {
     public abstract class LoaderButton : UIButton
     {
-        [SerializeField] protected GameSceneLoader _loader;
+        protected GameSceneLoader Loader = new();
 
         protected override void OnClicked()
         {
