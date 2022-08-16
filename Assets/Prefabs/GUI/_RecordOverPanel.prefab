@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 7172159760605837291}
   - component: {fileID: 8288044968726807611}
   - component: {fileID: 1569673601409472815}
+  - component: {fileID: 5897981255248989155}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -797,31 +798,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7172159760605837291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TwoDoors.GUI.GameUIView, Assembly-CSharp
-        m_MethodName: BackToMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1569673601409472815}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!82 &1569673601409472815
 AudioSource:
   m_ObjectHideFlags: 0
@@ -918,6 +895,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5897981255248989155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080563199184815362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6f22c811cc90e4a9840b21d8c70c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 1569673601409472815}
 --- !u!1 &8368421295212865550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,6 +1385,7 @@ GameObject:
   - component: {fileID: 8368421296564171313}
   - component: {fileID: 8368421296564171318}
   - component: {fileID: 3337268784851651170}
+  - component: {fileID: 8623297134076768115}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1504,19 +1495,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8368421296564171313}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TwoDoors.GUI.GameUIView, Assembly-CSharp
-        m_MethodName: RestartLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!82 &3337268784851651170
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1613,6 +1592,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8623297134076768115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8368421296564171316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed1cabd3a3734243bb55fc22fe02702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 3337268784851651170}
 --- !u!1 &8368421297114261825
 GameObject:
   m_ObjectHideFlags: 0
