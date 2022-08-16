@@ -7,8 +7,10 @@ namespace TwoDoors.GUI
     [DisallowMultipleComponent]
     public abstract class UIButton : MonoBehaviour
     {
+        [SerializeField] protected AudioSource _audio;
+
         private Button _button;
-    
+
         #region MonoBehaviour
 
         protected void Awake()
@@ -19,6 +21,7 @@ namespace TwoDoors.GUI
         protected void OnEnable()
         {
             _button.onClick.AddListener(OnClicked);
+            _button.onClick.AddListener(PlaySound);
         }
 
         protected void OnDisable()
@@ -29,5 +32,10 @@ namespace TwoDoors.GUI
         #endregion
 
         protected abstract void OnClicked();
+
+        private void PlaySound()
+        {
+            _audio?.Play();
+        }
     }
 }
