@@ -8333,6 +8333,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 565863038}
+    - target: {fileID: 7100708497226674292, guid: 577c78210d671994a95de432fa904324, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TwoDoors.GUI.GameSceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100708497226674292, guid: 577c78210d671994a95de432fa904324, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TwoDoors.GUI.GameSceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7100708497329671127, guid: 577c78210d671994a95de432fa904324, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8618,7 +8626,7 @@ PrefabInstance:
     - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 565863038}
+      objectReference: {fileID: 565863039}
     - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -8630,6 +8638,10 @@ PrefabInstance:
     - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TwoDoors.GUI.GameSceneLoader, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8368421296564171318, guid: 13e8bc9d6f71920428a45fa51d0a39c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
