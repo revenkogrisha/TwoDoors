@@ -1,10 +1,10 @@
-﻿namespace TwoDoors.GUI
+﻿namespace TwoDoors.GUI.Buttons
 {
     public class RestartLevelButton : LoaderButton
     {
         protected override void Load()
         {
-            _loader.RestartLevel();
+            Loader.RestartLevel();
         }
     }
 }

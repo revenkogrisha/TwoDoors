@@ -1,10 +1,9 @@
-﻿using TwoDoors.GUI;
-using TwoDoors.Save;
+﻿using TwoDoors.Save;
 using UnityEngine;
 using Zenject;
 using UnityEngine.SceneManagement;
 
-namespace Assets._Scripts.GUI
+namespace TwoDoors.GUI.Buttons
 {
     public class ResetProgressButton : UIButton
     {

@@ -1,10 +1,10 @@
-﻿namespace TwoDoors.GUI
+﻿namespace TwoDoors.GUI.Buttons
 {
     public class BackToMenuButton : LoaderButton
     {
         protected override void Load()
         {
-            _loader.BackToMenu();
+            Loader.BackToMenu();
         }
     }
 }

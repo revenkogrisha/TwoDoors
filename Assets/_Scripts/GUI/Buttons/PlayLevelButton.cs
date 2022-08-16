@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TwoDoors.GUI
+namespace TwoDoors.GUI.Buttons
 {
     public class PlayLevelButton : UIButton
     {

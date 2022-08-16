@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace TwoDoors.GUI
+namespace TwoDoors.GUI.Buttons
 {
     [RequireComponent(typeof(Button))]
     [DisallowMultipleComponent]
     public abstract class UIButton : MonoBehaviour
     {
-        [SerializeField] protected AudioSource _audio;
+        [SerializeField] protected AudioSource Audio;
 
         private Button _button;
 
@@ -35,7 +35,7 @@ namespace TwoDoors.GUI
 
         private void PlaySound()
         {
-            _audio?.Play();
+            Audio?.Play();
         }
     }
 }
