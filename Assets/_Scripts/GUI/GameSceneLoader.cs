@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 
 namespace TwoDoors.GUI
 {
-    public class GameSceneLoader : MonoBehaviour
+    public class GameSceneLoader
     {
         private const int _menuSceneIndex = 0;
 
