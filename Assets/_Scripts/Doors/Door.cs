@@ -40,7 +40,7 @@ namespace TwoDoors.Doors
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            Tools.DoIfIsNotNull<Character>(other, TryPassCharacter);
+            Tools.InvokeIfNotNull<Character>(other, TryPassCharacter);
         }
 
         #endregion

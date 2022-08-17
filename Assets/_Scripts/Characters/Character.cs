@@ -47,12 +47,12 @@ namespace TwoDoors.Characters
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            Tools.DoIfIsNotNull<Door>(other, TryOpen);
+            Tools.InvokeIfNotNull<Door>(other, TryOpen);
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            Tools.DoIfIsNotNull<Door>(other, TryClose);
+            Tools.InvokeIfNotNull<Door>(other, TryClose);
         }
 
         #endregion
