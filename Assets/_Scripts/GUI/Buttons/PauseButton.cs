@@ -17,6 +17,9 @@ namespace TwoDoors.GUI.Buttons
             if (_score is LevelScore levelScore)
                 levelScore.OnGameFinished += Disable;
 
+            if (_score is RecordScore  recordScore)
+                recordScore.OnRecordBreaked += Disable;
+
             _score.OnGameOvered += Disable;
         }
 
@@ -26,6 +29,10 @@ namespace TwoDoors.GUI.Buttons
 
             if (_score is LevelScore levelScore)
                 levelScore.OnGameFinished -= Disable;
+
+
+            if (_score is RecordScore recordScore)
+                recordScore.OnRecordBreaked -= Disable;
 
             _score.OnGameOvered -= Disable;
         }
