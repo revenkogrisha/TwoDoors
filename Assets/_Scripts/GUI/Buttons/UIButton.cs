@@ -4,29 +4,28 @@ using UnityEngine.UI;
 namespace TwoDoors.GUI.Buttons
 {
     [RequireComponent(typeof(Button))]
-    [DisallowMultipleComponent]
     public abstract class UIButton : MonoBehaviour
     {
         [SerializeField] protected AudioSource Audio;
 
-        private Button _button;
+        protected Button Button;
 
         #region MonoBehaviour
 
         protected void Awake()
         {
-            _button = GetComponent<Button>();
+            Button = GetComponent<Button>();
         }
 
         protected void OnEnable()
         {
-            _button.onClick.AddListener(PlaySound);
-            _button.onClick.AddListener(OnClicked);
+            Button.onClick.AddListener(PlaySound);
+            Button.onClick.AddListener(OnClicked);
         }
 
         protected void OnDisable()
         {
-            _button.onClick.RemoveAllListeners();
+            Button.onClick.RemoveAllListeners();
         }
 
         #endregion
