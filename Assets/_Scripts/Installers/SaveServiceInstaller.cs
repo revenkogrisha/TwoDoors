@@ -6,13 +6,12 @@ namespace TwoDoors.Installers
 {
     public class SaveServiceInstaller : MonoInstaller
     {
-        [SerializeField] private SaveService _saveService;
+        [SerializeField] private SaveService _saveServicePrefab;
 
         public override void InstallBindings()
         {
-            var saveInstance = Container
-                .InstantiatePrefabForComponent<SaveService>(
-                _saveService, new Vector3(), Quaternion.identity, null);
+            var saveInstance = Container.InstantiatePrefabForComponent<SaveService>(
+                _saveServicePrefab, Vector3.zero, Quaternion.identity, null);
 
             Container.Bind<SaveService>()
                 .FromInstance(saveInstance)
