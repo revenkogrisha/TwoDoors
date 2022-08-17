@@ -27,11 +27,11 @@ namespace TwoDoors.Scene
             var record = _saveService.RecordScore;
             if (Amount > record)
             {
-                OnRecordBreaked?.Invoke();
-
                 PlayerPrefs.SetInt(Record, Amount);
                 _saveService.Save();
                 _saveService.Load();
+
+                OnRecordBreaked?.Invoke();
 
                 return;
             }
