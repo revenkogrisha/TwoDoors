@@ -619,15 +619,15 @@ GameObject:
   - component: {fileID: 565863035}
   - component: {fileID: 565863034}
   - component: {fileID: 565863038}
-  - component: {fileID: 565863039}
   - component: {fileID: 565863040}
   - component: {fileID: 565863041}
+  - component: {fileID: 565863042}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &565863034
 MonoBehaviour:
@@ -729,19 +729,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _finishPanelAnimator: {fileID: 831230527562678644}
   _gameOverPanelAnimator: {fileID: 5054763634400820050}
---- !u!114 &565863039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565863033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae84fb944b351534e9ce35b40d580344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scoreText: {fileID: 1708016352}
 --- !u!114 &565863040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,10 +738,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 565863033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 583c42b0947fe4a439407857f2df3606, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cb2dbfbd9698ee4081e76349fe8846f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recordText: {fileID: 240703316859576741}
+  RecordTexts:
+  - {fileID: 240703316859576741}
+  - {fileID: 2127725423}
 --- !u!114 &565863041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,10 +753,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 565863033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 583c42b0947fe4a439407857f2df3606, type: 3}
+  m_Script: {fileID: 11500000, guid: 9430063195654aa43ba2725d57a90405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recordText: {fileID: 2127725423}
+  ScoreTexts:
+  - {fileID: 1708016352}
+--- !u!114 &565863042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565863033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79cf775aa2976a0488cc6a951f87532d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreTexts:
+  - {fileID: 1051131188}
+  - {fileID: 2013223677}
 --- !u!1 &767869924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1258,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameState: {fileID: 1786452848}
+--- !u!114 &1051131188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1726429273583950078, guid: 4277ad9f1802f2f4ab47c1bc11db27aa, type: 3}
+  m_PrefabInstance: {fileID: 831230527562678643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1053745770
 GameObject:
   m_ObjectHideFlags: 0
@@ -7531,6 +7547,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2013223677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1728141402884176061, guid: 9ed8e4e17b69e4849aa46c2b753a43bc, type: 3}
+  m_PrefabInstance: {fileID: 5054763634400820049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063506546
 GameObject:
   m_ObjectHideFlags: 0

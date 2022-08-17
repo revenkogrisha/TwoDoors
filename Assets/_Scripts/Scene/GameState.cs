@@ -1,4 +1,5 @@
 using TwoDoors.Save;
+using TwoDoors.Ads;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,7 @@ namespace TwoDoors.Scene
         [Inject] private Score _score;
         [Inject] private GamePause _pause;
         [Inject] private SaveService _saveService;
+        [Inject] private UnityAds _ads;
 
         private LevelData _levelData;
 
@@ -56,12 +58,14 @@ namespace TwoDoors.Scene
 
         private void FinishLevel()
         {
+            _ads.ShowInterstitialWithChance();
             _pause.StopTimeFlowWithDelay(_pause.PopupDelaySeconds);
             _levelData.SaveLevel();
         }
 
         private void GameOver()
         {
+            _ads.ShowInterstitialWithChance();
             _pause.StopTimeFlowWithDelay(_pause.PopupDelaySeconds);
         }
     }
