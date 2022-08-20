@@ -17,6 +17,7 @@ Welcome to work! To tell the truth, you won't need more than Two Doors! Just pas
 ## About the project
 
 * Start Date: July 15, 2022
+* Release Date: August 19, 2022
 * Project was made using [Unity Engine](https://unity.com/)
 * Verison of Unity: 2021.3.4f1
 
