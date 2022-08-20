@@ -16,10 +16,7 @@ namespace TwoDoors.Doors
             _score = score;
 
             if (_score is LevelScore levelScore)
-            {
                 levelScore.OnPlayerFailed += PlayFailSound;
-
-            }
 
             _score.OnPlayerScored += PlaySuccessSound;
         }
