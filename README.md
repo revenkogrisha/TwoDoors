@@ -28,7 +28,7 @@ Welcome to work! To tell the truth, you won't need more than Two Doors! Just pas
 
 ## Links
 
-* [Play Market](https://play.google.com/store/apps/details?id=com.Revenkorg.TwoDoors)
+* **[Play Market](https://play.google.com/store/apps/details?id=com.Revenkorg.TwoDoors)**
 
 ## Contributing
 
