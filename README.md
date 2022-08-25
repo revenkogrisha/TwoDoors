@@ -17,16 +17,16 @@ Welcome to work! To tell the truth, you won't need more than Two Doors! Just pas
 
 ## About the project
 
-* Start Date: July 15, 2022
-* Release Date: August 19, 2022
-* Project was made using [Unity Engine](https://unity.com/)
-* Verison of Unity: 2021.3.4f1
+* **Start Date:** July 15, 2022
+* **Release Date:** August 19, 2022
+* Project was made with **[Unity Engine](https://unity.com/)**
+* **Engine Version:** 2021.3.4f1
 
 ### Built With
 
 * [Zenject](https://github.com/modesttree/Zenject) - Dependency Injection Container for Unity
-* [Universal RP](https://unity.com/ru/srp/universal-render-pipeline) - Rendering asset by Unity Technologies
-* [UnityAds](https://unity.com/ru/products/unity-ads) - Official UnityAds SDK v4.3.0
+* [Universal RP](https://unity.com/ru/srp/universal-render-pipeline) - Scriptable Render Pipeline made by Unity
+* [UnityAds](https://unity.com/ru/products/unity-ads) - UnityAds SDK v4.3.0
 
 ## Links
 
@@ -48,5 +48,5 @@ This project is licensed under the Apache-2.0 License - see the [LICENSE.md](LIC
 
 ## Acknowledgments
 
-* [Privacy Policy Generator](https://github.com/nisrulz/app-privacy-policy-generator) - used during publishing onto Google Play Market
+* [Privacy Policy Generator](https://github.com/nisrulz/app-privacy-policy-generator) - used for publishing onto Google Play Market
 * [Music creator](https://soundcloud.com/tashlek) - page on Soundcloud
